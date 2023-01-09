@@ -11,8 +11,8 @@
             <button
               class="btn btn-outline-success btn-sm"
               data-abc="true"
-              @click="getPCat"
-              @focus="productCat = category"
+              @click="getId"
+              @focus="singleProducts = category"
             >
               View Products
             </button>
@@ -28,7 +28,7 @@ import axios from 'axios';
 
 export default {
   data: () => ({
-    productCat: null,
+    singleProducts: null,
     ProductbyCatagories: [],
     ProductCatagories: [],
   }),
@@ -63,11 +63,11 @@ export default {
           });
       }
     },
-    getPCat() {
+    getId() {
       // this.productid = this.latestProducts.id;
       this.$router.push({
-        name: 'CatagoriesProduct',
-        params: { productCata: this.productCat },
+        name: 'SingleProduct',
+        params: { productCata: this.singleProducts },
       });
     },
   },

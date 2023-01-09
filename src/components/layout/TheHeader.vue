@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg navbar-light fixed-top nav"
+    class="navbar navbar-expand-lg navbar-light sticky-top nav"
     id="navbar"
   >
     <a class="navbar-brand nav-links" href="#">B4Buy</a>
@@ -24,7 +24,7 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">About</a>
+          <router-link to='/addproducts' class="nav-link " href="#">Add Product</router-link>
         </li>
         <li class="nav-item ">
           <router-link to="/catagories" class="nav-link  cat-bbtn "
@@ -51,34 +51,14 @@
         </form>
       </div>
     </div>
-    <form class="form-inline mt-2">
-      <div class="input-group mb-2 mr-sm-2">
-        <label class="sr-only h-75" for="inlineFormInputGroupUsername2"
-          >Username</label
-        >
-        <input
-          type="text"
-          class="form-control mb-2 mr-sm-2"
-          id="inlineFormInputGroupUsername2"
-          placeholder="Username"
-        />
-      </div>
-      <div id="submit">
-        <div class="input-group mb-2 mr-sm-2">
-          <label class="sr-only h-75" for="inlineFormInputName2">Name</label>
-          <input
-            type="text"
-            class="form-control mb-2 mr-sm-2"
-            id="inlineFormInputName2"
-            placeholder="Password"
-          />
-        </div>
+    <router-link to="/Cart"><i class="fa fa-shopping-cart btn bg-white mr-5">Cart</i></router-link>
+      <div>
 
-        <button type="submit" class="btn btn-outline-success h-25 nav-links">
+        <router-link to='/login' type="submit" class="btn btn-outline-success h-25 nav-links">
           Sign In
-        </button>
+        </router-link>
       </div>
-    </form>
+  
   </nav>
 </template>
 <script>
@@ -114,7 +94,7 @@ body {
 }
 
 .search-bar {
-  width: 40rem;
+  width: 70rem;
   display: flex;
   display: flex-end;
 }

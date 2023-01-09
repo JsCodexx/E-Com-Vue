@@ -41,10 +41,12 @@
                 </div>
               </div>
               <button
+              @click.prevent="addCart"
                 class="btn btn-outline-success my-2 my-sm-0"
                 type="submit"
+                @focus=""
               >
-                Buy
+                Add to Cart
               </button>
             </div>
           </div>
@@ -149,7 +151,7 @@ export default {
     };
   },
   created() {
-    // this.productId = this.$route.params.id;
+    // to store the latest route in productId
     this.productId= this.$route.params.id
   },
   mounted(){
@@ -157,18 +159,19 @@ export default {
   },
   methods: {
     getProduct (){
-        console.log(this.productId)
         axios
         .get(`https://dummyjson.com/products/${this.productId}`)
         .then((response)=>{
             this.product=response.data;
-            console.log(this.product)
         
         })
         .catch((error)=>{
             console.log(error)
         });
     },
+    addCart(){
+      
+    }
   },
 };
 </script>

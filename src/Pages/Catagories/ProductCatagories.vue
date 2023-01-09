@@ -3,6 +3,6 @@
 </template>
 <script>
 export default {
-  name: 'CatagoriesProduct',
+  name: 'SingleProduct',
 };
 </script>

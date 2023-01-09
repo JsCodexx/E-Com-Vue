@@ -1,5 +1,5 @@
 <template>
-  <div class="container1">
+  <div class="container1 ">
     <div class="tags tags1">
       <a href="#">stream millions of songs</a>
       <a href="#">Everything for your business</a>
@@ -63,7 +63,7 @@
   padding-top: 20px;
   display: flex;
   justify-content: center;
-  height: 25rem;
+  height: 33rem;
   justify-content: space-around;
   background-color: rgb(44, 46, 48);
   width: 100%;

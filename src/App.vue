@@ -3,7 +3,7 @@
 
   <router-view> </router-view>
 
-  <footer-card></footer-card>
+  <footer-card class="sticky-bottom"></footer-card>
 </template>
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
