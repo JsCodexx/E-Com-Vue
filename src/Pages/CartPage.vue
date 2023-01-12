@@ -1,232 +1,479 @@
 <template>
-  <div id="wrap">
-    <div id="cart_layout_1">
-      <div class="one">
-        <h1>Click to checkout</h1>
-      </div>
-      <div class="cart_info">
-        <div class="product">
-          <img src="../assets/Images/HomePage/catagoriess.jpg" />
-        </div>
-        <div class="product_info">
-          <div class="center">
-            <h3>watches</h3>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="row cart-wrapper">
+            <div class="col-sm-8 col-md-8">
+              <div class="cart-table-container">
+                <table class="table table-cart">
+                  <thead>
+                    <tr class="">
+                      <th class="thumbnail-col"></th>
+                      <th class="product-col">Product</th>
+                      <th class="price-col">Price</th>
+                      <th class="qty-col">Quantity</th>
+                      <th class="text-right">Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="item in cart" :key="item.id" class="product-row">
+                      <td>
+                        <figure class="product-image-container">
+                          <a href="#!" class="product-image">
+                            <img
+                              :src=" item.thumbnail "
+                              alt="product"
+                            />
+                          </a>
+
+                          <button @click.prevent="removeItem(item.id)"
+                            class="btn-remove icon-cancel"
+                            title="Remove Product"
+                          ></button>
+                        </figure>
+                      </td>
+                      <td class="product-col">
+                        <h5 class="product-title">
+                          <a>{{ item.title }}</a>
+                        </h5>
+                      </td>
+                      <td>{{ item.price }}</td>
+                      <td class="product-col">
+                        <h5 class="product-title">
+                          <a>{{ item.quantity }}</a>
+                        </h5>
+                      </td>
+                      <td class="text-right">
+                        <span class="subtotal-price"> {{ (item.price)-100 }}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-4">
+              <div class="cart-summary">
+                <h3>CART TOTALS</h3>
+
+                <table class="table table-totals">
+                  <tbody>
+                    <tr>
+                      <td>Subtotal</td>
+                      <td>$17.90</td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2" class="text-left promo-code-area">
+                        <h3>Promo Code</h3>
+
+                        <div class="cart-discount">
+                          <form action="#">
+                            <div class="input-group">
+                              <input
+                                type="text"
+                                class="form-control form-control-sm"
+                                placeholder="Coupon Code"
+                                required=""
+                              />
+                              <div class="input-group-append">
+                                <button
+                                  class="btn apply-coupon-btn"
+                                  type="submit"
+                                >
+                                  Apply Coupon
+                                </button>
+                              </div>
+                            </div>
+                            <!-- End .input-group -->
+                          </form>
+                        </div>
+
+                        <button
+                          type="submit"
+                          class="btn btn-shop btn-update-total"
+                        >
+                          Update Totals
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+
+                  <tfoot>
+                    <tr>
+                      <td>Other charges</td>
+                      <td>$17.90</td>
+                    </tr>
+                    <tr>
+                      <td>Delivery charges</td>
+                      <td>$17.90</td>
+                    </tr>
+                    <tr>
+                      <td><b>Total</b></td>
+                      <td><b>${{ subTotal }}.00</b></td>
+                    </tr>
+                  </tfoot>
+                </table>
+
+                <div class="checkout-methods">
+                  <a href="#!" class="btn btn-block btn-dark"
+                    >Proceed to Checkout <i class="fa fa-arrow-right"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End .cart-summary -->
+            </div>
           </div>
         </div>
-      </div>
-      <div class="complete_cart">
-        <div class="checkout">
-          <div class="total">
-            <h2>Subtotal:</h2>
-          </div>
-          <span class="subtotal"> $24.99 </span>
-          <div class="bfb">
-            <button
-              class="btn btn-outline-success my-2 my-sm-0 nav-links"
-              type="submit "
-              @click.prevent="chekoutToShip"
-            >
-              checkout
-            </button>
-          </div>
-        </div>
-        <div class="updated mobile"></div>
       </div>
     </div>
-  </div>
-  
+  </section>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'ShoppingCart',
+  data() {
+    return {
+      cartData: '',
+    
+    };
+  },
+  mounted() {
+    // this.getCart();
+  },
+  methods: {
+
+
+    removeItem(id){
+      console.log( ' id is', id)
+      this.$store.dispatch('removeProduct' , id )
+    }
+
+  },
+  computed: {
+    cart() {
+      console.log(this.$store.state.cart, 'imhere');
+      return this.$store.state.cart;
+    },
+    subTotal(){
+      let price = 0
+      this.$store.state.cart.forEach(item => price += item.price)
+      return price;
+    }
+  },
 };
 </script>
 <style scoped>
-h1,
-h3 {
+.cart-table-container {
+  margin-bottom: 2.5rem;
+}
+
+.cart-table-container .input-group .form-control {
+  height: 1.2rem;
+  border-color: rgba(0, 0, 0, 0.09);
+}
+
+.cart-table-container .btn-shop,
+.cart-table-container .btn-sm {
+  border: none;
+  background-color: #f4f4f4;
+  color: #222529;
+}
+
+.cart-table-container .btn-shop:hover,
+.cart-table-container .btn-sm:hover {
+  color: #fff;
+  background-color: #08c;
+}
+
+.table.table-cart tr td,
+.table.table-cart tr th,
+.table.table-wishlist tr td,
+.table.table-wishlist tr th {
+  vertical-align: middle;
+}
+
+.table.table-cart tr th,
+.table.table-wishlist tr th {
+  border: 0;
+  color: #222529;
   font-weight: 500;
+  line-height: 2rem;
+  font-size: 14px;
+  text-transform: uppercase;
 }
-img {
-  max-width: 100%;
-}
-#wrap {
-  width: 80%;
-  margin: 20px auto;
-}
-#cart_layout_1 {
-  color: #808080;
-}
-/*  */
-#cart_layout_1 .cart_info {
-  border-top: 2px solid #ccc;
-  /* width: 100%; */
-  height: 270px;
-  max-height: 300px;
 
+.table.table-cart tr td,
+.table.table-wishlist tr td {
+  border-top: 1px solid #e7e7e7;
 }
-#cart_layout_1 .cart_info .product {
+
+.table.table-cart tr td.product-col,
+.table.table-wishlist tr td.product-col {
+  padding: 2rem 0.8rem 1.8rem 0;
+}
+
+.table.table-cart tr.product-action-row td,
+.table.table-wishlist tr.product-action-row td {
+  padding: 0 0 2.2rem;
+  border: 0;
+}
+
+.table.table-cart .product-image-container,
+.table.table-wishlist .product-image-container {
+  position: relative;
+  width: 8rem;
+  margin: 0;
+}
+
+.table.table-cart .product-title,
+.table.table-wishlist .product-title {
+  margin-bottom: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+.table.table-cart .product-title a,
+.table.table-wishlist .product-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.table.table-cart .subtotal-price,
+.table.table-wishlist .subtotal-price {
+  color: #222529;
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.table.table-cart .btn-remove,
+.table.table-wishlist .btn-remove {
+  right: 15px;
+  font-size: 1.1rem;
+}
+
+.table.table-cart tfoot td,
+.table.table-wishlist tfoot td {
+  padding: 2rem 0.8rem 1rem;
+}
+
+.table.table-cart tfoot .btn,
+.table.table-wishlist tfoot .btn {
+  padding: 1.2rem 2.4rem 1.3rem 2.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  height: 2.688rem;
+  letter-spacing: -0.018em;
+  font-size: 14px;
+  padding: 0px 25px;
+}
+
+.table.table-cart tfoot .btn + .btn,
+.table.table-wishlist tfoot .btn + .btn {
+  margin-left: 1rem;
+}
+
+.table.table-cart .bootstrap-touchspin.input-group,
+.table.table-wishlist .bootstrap-touchspin.input-group {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.table.table-cart .product-title a,
+.table.table-cart .subtotal-price {
   display: block;
-  float: left;
-  width: 30%;
-  padding-top: 1rem;
-}
-#cart_layout_1 .cart_info .product img {
-  max-height: 270px;
-}
-#cart_layout_1 .cart_info .product_info {
-  display: block;
-  float: left;
-  /* width: 10%; */
-  margin-left: 5%;
-  height: auto;
-  /* margin-bottom: 2rem; */
+  margin-bottom: 1px;
 }
 
-#cart_layout_1 .complete_cart .checkout .total {
-  width: 50%;
-  float: left;
-  
-  /* text-align: center; */
-}
-#cart_layout_1 .complete_cart .checkout h2 {
-  display: inline-block;
-  font-size: 2.5em;
-  font-weight: 500;
-
+.table-cart tr th {
+  padding: 1rem;
 }
 
-#cart_layout_1 .complete_cart .subtotal {
-  font-size: 3em;
-  width: 40%;
-  float: left;
+.table-cart tr th.thumbnail-col {
+  width: 16%;
+}
+
+.table-cart tr th.product-col {
+  width: 33%;
+}
+
+.table-cart tr th.price-col {
+  width: 14%;
+}
+
+.table-cart td {
+  padding: 1rem 1rem;
+}
+
+i.cart-empty {
+  font-size: 100px;
+  color: #d3d3d4;
+}
+
+.qty-col {
+  min-width: 6.125rem;
+}
+
+tbody .product-col {
+  font-size: 0;
+}
+
+.product-col .product-image-container {
+  display: table-cell;
+  padding-right: 1.8rem;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.product-col .product-image img {
+  border: 1px solid #ccc;
+}
+
+.product-col .product-title {
+  margin-bottom: 1px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.cart-discount {
+  margin-bottom: 2rem;
+}
+
+.cart-discount h4 {
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.cart-discount form {
+  max-width: 26.25rem;
+}
+
+.cart-discount .input-group-append {
+  margin-left: 3px;
+}
+
+.cart-summary {
+  margin-bottom: 1.6rem;
+  padding: 1.5rem;
+  border: 1px solid #e7e7e7;
+  background: #fff;
+}
+
+.cart-summary h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.product-image img {
+  width: 6.25rem;
+  height: 6.25rem;
+}
+
+.quantity-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.quantity-wrapper label {
+  font-weight: 300;
+  color: #666666;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.quantity-wrapper .input-group {
+  width: 6.25rem;
+  margin: 0 10px;
+}
+
+.quantity-wrapper input {
+  width: 2rem !important;
+  pointer-events: none;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  margin-left: auto !important;
+  position: initial !important;
+}
+
+.quantity-wrapper .input-group-btn {
+  border: 1px solid #d5d5d5;
+  border-radius: 50px !important;
+  display: flex;
+}
+
+.quantity-wrapper .btn {
+  padding: 0;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  box-shadow: none;
+}
+
+.quantity-wrapper .bx {
+  font-size: 16px;
+}
+
+.promo-code-area h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.apply-coupon-btn {
+  background-color: #4f1fff;
+  color: #fff;
+}
+
+.apply-coupon-btn:hover {
+  color: #fff;
+}
+
+.cart-discount input {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.table-totals tfoot tr td:last-child {
   text-align: right;
 }
-#cart_layout_1 .complete_cart .bfb {
-  width: 100%;
-  float: left;
-  position: relative;
-}
-#cart_layout_1 .mobile {
-  display: none;
-}
 
-@media (max-width: 800px) {
-  #cart_layout_1 .complete_cart .updated {
-    width: 65%;
-  }
-  #cart_layout_1 .complete_cart .checkout {
-    width: 35%;
-  }
-}
-@media (max-width: 600px) {
-  #cart_layout_1 .cart_info .product {
-    width: 100%;
-  }
-  #cart_layout_1 .updated {
-    display: none;
-  }
-}
-#cart_layout_1 .mobile {
-  display: block;
-}
-#cart_layout_1 .cart_info {
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-#cart_layout_1 .cart_info .product_info {
-  width: 100%;
-  margin-left: 0;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 10px;
-}
-#cart_layout_1 .cart_info .product_info span {
-  display: inline-block;
-  margin: 5px;
-}
-
-#cart_layout_1 .cart_info .details {
-  width: 100%;
-  margin: 0;
-}
-
-#cart_layout_1 .cart_info .details .price {
-  width: 50%;
+.checkout-methods {
   text-align: center;
 }
 
-#cart_layout_1 .complete_cart .checkout {
-  width: 100%;
-}
-
-#cart_layout_1 .complete_cart .updated .coupon h2 {
-  width: 100%;
-}
-
-#cart_layout_1 .complete_cart .bfb .button {
-  width: 100%;
-  position: initial;
-  float: left;
-}
-h1 {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  /* font-family: "Raleway, sans-serif; */
-  font-weight: 300;
-  font-size: 40px;
-  color: #080808;
-  -webkit-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
-}
-
-h1 span {
-  display: block;
-  font-size: 0.5em;
-  line-height: 1.3;
-}
-
-h1 em {
-  font-style: normal;
-  font-weight: 600;
-}
-
-/* === HEADING STYLE #1 === */
-.one {
-  padding-top: 5rem;
-}
-
-.one h1 {
-  text-align: center;
-  text-transform: uppercase;
-  padding-bottom: 5px;
-}
-
-.one h1:before {
-  width: 28px;
-  height: 5px;
-  display: block;
-  content: '';
+.btn-remove {
   position: absolute;
-  bottom: 3px;
-  left: 50%;
-  margin-left: -14px;
-  background-color: #b80000;
+  top: -10px;
+  right: -8px;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  color: #474747;
+  background-color: #fff;
+  box-shadow: 0 2px 6px 0 rgb(0 0 0 / 40%);
+  text-align: center;
+  line-height: 2rem;
 }
-
-.one h1:after {
-  width: 100px;
-  height: 1px;
-  display: block;
-  content: '';
-  position: relative;
-  margin-top: 25px;
-  left: 50%;
-  margin-left: -50px;
-  background-color: #b80000;
+.icon-cancel {
+  text-decoration: none;
+}
+.icon-cancel:before {
+  content: '';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 700;
 }
 </style>
 

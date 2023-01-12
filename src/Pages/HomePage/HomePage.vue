@@ -44,12 +44,19 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  name:'home'
+}
+</script>
 
 
 <style scoped>
 .card-shopping {
+
   margin-left: 16rem;
   /* margin: 0; */
+  box-sizing: border-box;
   gap: 2rem;
   justify-content: center;
   display: flex;

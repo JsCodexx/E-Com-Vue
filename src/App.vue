@@ -1,9 +1,8 @@
 <template>
   <the-header></the-header>
-
   <router-view> </router-view>
 
-  <footer-card class="sticky-bottom"></footer-card>
+  <footer-card ></footer-card>
 </template>
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
@@ -20,4 +19,3 @@ export default {
   background: #f2f2f2;
 }
 </style>
-

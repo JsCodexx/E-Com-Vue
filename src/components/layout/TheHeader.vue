@@ -3,7 +3,7 @@
     class="navbar navbar-expand-lg navbar-light sticky-top nav"
     id="navbar"
   >
-    <a class="navbar-brand nav-links" href="#">B4Buy</a>
+    <a class="navbar-brand nav-links" >B4Buy</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -31,6 +31,12 @@
             >Catagories</router-link
           >
         </li>
+        <router-link to="/Cart"><i class="fa fa-shopping-cart fa-xl btn  mr-5"></i></router-link>
+        <!-- <li class="nav-item ">
+          <router-link to="/AllProducts" class="nav-link  cat-bbtn "
+            >All Products</router-link
+          >
+        </li> -->
       </ul>
       <div class="search-bar">
         <form class="form-inline my-2 my-lg-0">
@@ -51,7 +57,7 @@
         </form>
       </div>
     </div>
-    <router-link to="/Cart"><i class="fa fa-shopping-cart btn bg-white mr-5">Cart</i></router-link>
+    
       <div>
 
         <router-link to='/login' type="submit" class="btn btn-outline-success h-25 nav-links">
@@ -78,13 +84,7 @@ export default{
 </script>
 
 <style scoped>
-body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  background-color: rgb(241, 237, 237);
-  font-family: 'Calibri', sans-serif !important;
-}
+
 .nav{
   background-color: #0275dd;
 }
@@ -94,13 +94,13 @@ body {
 }
 
 .search-bar {
-  width: 70rem;
+  width: 50rem;
   display: flex;
-  display: flex-end;
+  display: flex-start;
 }
 
 .wrapper {
-  padding: 100px;
+  padding: 6.25rem;
 }
 
 .image--cover {

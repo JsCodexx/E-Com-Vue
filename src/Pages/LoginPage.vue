@@ -31,14 +31,13 @@
         </div>
 
         <button @click.prevent="logIn">Log In</button>
-
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 export default {
   data() {
     name: 'login';
@@ -48,36 +47,37 @@ export default {
     };
   },
   methods: {
-    logIn() {
+    async logIn() {
       localStorage.removeItem('token');
       const userData = {
         username: this.username,
         password: this.password,
       };
       console.log(userData);
-      fetch('https://dummyjson.com/auth/login' , userData).then((response) => {
-        console.log(response)
-        const username = response.data.username;
-        const token = response.data.token;
-        this.$store.commit({
-          type: 'Login/setToken',
-          value: token,
+      await axios
+        .post('https://dummyjson.com/auth/login', {
+          username: this.username,
+          password: this.password,
+          // expiresInMins: 60, // optional
+        })
+        .then((response) => {
+          (token = response.data.token), localStorage.setItem('token', token);
+
+          this.$store.commit({
+            type: 'Store/setToken',
+            value: token,
+          });
+          localStorage.setItem('token', token);
+          this.$router.push('/home');
+        })
+
+        .catch((error) => {
+          console.log(JSON.stringify(error));
         });
-        this.$store.commit('setToken', token);
+      // this.$store.commit('setToken', token);
 
-      axios.defaults.headers.common['Authorization'] = 'Token ' + token;
-      console.log(response);
-      localStorage.setItem('token', token);
-      localStorage.setItem('username', username);
-
-      const toPath = this.$route.query.to || '/home';
-
-      this.$router.push(toPath);
-      })
-      .catch((error) => {
-      console.log(JSON.stringify(error));
-      });
-    
+      // axios.defaults.headers.common['Authorization'] = 'Token ' + token;
+      // console.log(response);
 
       // axios
       //   .fetch('https://dummyjson.com/auth/login', userData)

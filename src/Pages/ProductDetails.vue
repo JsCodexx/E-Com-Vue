@@ -10,17 +10,15 @@
             class="d-flex justify-content-center container product-container"
           >
             <div class="card p-3 bg-white">
-              <i class="fa-thin fa-tag"></i>  
-                <img
-                  :src="`${product.thumbnail}`"
-                />
+              <i class="fa-thin fa-tag"></i>
+              <img :src="`${product.thumbnail}`" />
               <div>
-                <h4>{{product.title}}</h4>
-                <h6 class="mt-0 text-black-50">{{product.title}}</h6>
+                <h4>{{ product.title }}</h4>
+                <h6 class="mt-0 text-black-50">{{ product.title }}</h6>
               </div>
               <div class="stats mt-2">
                 <div class="d-flex justify-content-between p-price">
-                  <span>Brand</span><span>{{product.brand}}</span>
+                  <span>Brand</span><span>{{ product.brand }}</span>
                 </div>
                 <div class="d-flex justify-content-between p-price">
                   <span>Total Stock</span><span>{{ product.stock }}</span>
@@ -37,14 +35,13 @@
                     mt-4
                   "
                 >
-                  <span>Total</span><span>${{product.price}}</span>
+                  <span>Total</span><span>${{ product.price }}</span>
                 </div>
               </div>
               <button
-              @click.prevent="addCart"
+                @click.prevent="addCart"
                 class="btn btn-outline-success my-2 my-sm-0"
                 type="submit"
-                @focus=""
               >
                 Add to Cart
               </button>
@@ -82,7 +79,8 @@
                   <span class="fa fa-star bg-warning"></span>
                   <span class="fa-solid fa-star-half-stroke bg-warning"></span>
                 </span>
-                <span class="reviews__ratings-score"></span><span>{{ product.rating }} out of 5</span>
+                <span class="reviews__ratings-score"></span
+                ><span>{{ product.rating }} out of 5</span>
               </div>
               <p class="reviews__ratings-total">40 customer ratings</p>
             </div>
@@ -147,31 +145,40 @@ export default {
   data() {
     return {
       product: {},
-      productId: '',
+      // quantity: '1',
+      productId:'',
     };
   },
   created() {
     // to store the latest route in productId
-    this.productId= this.$route.params.id
+    this.productId = this.$route.params.id;
   },
-  mounted(){
+  mounted() {
     this.getProduct();
   },
   methods: {
-    getProduct (){
-        axios
+    getProduct() {
+      axios
         .get(`https://dummyjson.com/products/${this.productId}`)
-        .then((response)=>{
-            this.product=response.data;
-        
+        .then((response) => {
+          this.product = response.data;
         })
-        .catch((error)=>{
-            console.log(error)
+        .catch((error) => {
+          console.log(error);
         });
     },
-    addCart(){
-      
-    }
+    addCart() {
+      // console.log(this.$store.dispatch('addProdcutToCart'))
+    // if()
+      this.$store.dispatch('addProdcutToCart', {
+        id: this.product.id,
+        stock: this.product.stock,
+        title: this.product.title,
+        price: this.product.price,
+        thumbnail: this.product.thumbnail,
+        quantity: this.quantity,
+      });
+    },
   },
 };
 </script>
@@ -187,7 +194,6 @@ export default {
   width: 600px;
   height: auto;
 }
-
 
 .related-info {
   justify-content: center;
@@ -222,9 +228,6 @@ h1 em {
   font-style: normal;
   font-weight: 600;
 }
-
-
-
 
 /* === HEADING STYLE #1 === */
 .one {
@@ -295,7 +298,7 @@ h1 em {
   justify-content: right;
 }
 .product-details {
-    width: 30%;
+  width: 30%;
   padding: 6rem;
   border: 5px solid #ccc;
   border-radius: 14px;

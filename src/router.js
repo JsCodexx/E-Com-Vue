@@ -4,7 +4,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/home' },
-    { path: '/home', component: () => import('./Pages/HomePage/HomePage.vue') },
+    { name: 'home',
+    path: '/home', component: () => import('./Pages/HomePage/HomePage.vue') },
 
     {
       path: '/catagories',
@@ -25,6 +26,7 @@ const router = createRouter({
       path: '/ProductDetails/:id',
       component: () => import('./Pages/ProductDetails.vue'), //This is for the lazyloading
     },
+
     {
       name: 'ShoppingCart',
       path: '/Cart',
@@ -34,6 +36,11 @@ const router = createRouter({
       name: 'SearchProducts',
       path: '/search/:id',
       component: () => import('./Pages/SearchProduct.vue'),
+    },
+    {
+      name:'AllProducts',
+      path:'/AllProducts',
+      component:()=> import('./components/UI/MainProducts.vue'),
     },
     {
       name: 'login',

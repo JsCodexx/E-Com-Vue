@@ -25,28 +25,39 @@
       </button>
     </div>
   </div>
+
+  
 </template>
 
 <script scoped>
 import axios from 'axios';
+import PaginationCard from './PaginationCard.vue';
 
 export default {
+  components: { PaginationCard },
   data: () => ({
     show: false,
     latestProducts: [],
     productId: null,
-    showModal: false,
+    currentPage: 1,
+    limit: 9,
+    skip: 0,
   }),
+  created() {
+    this.noOfProducts = 9;
+    this.productsToSkip = 0;
+  },
   mounted() {
     this.getLatestProducts();
   },
   methods: {
     getLatestProducts() {
       const alpha = axios
-        .get('https://dummyjson.com/products?limit=10')
+        .get(
+          `https://dummyjson.com/products?limit=${this.limit}&skip=${this.skip}`
+        )
         .then((response) => {
           this.latestProducts = response.data.products;
-          console.log(this.latestProducts[6]);
         })
         .catch((error) => {
           console.log(error);
@@ -60,17 +71,19 @@ export default {
       });
     },
   },
+  onPageChange(page) {
+    this.currentPage=page;
+    console.log(this.currentPage)
+    if(page){
+      this.skip = this.limit*(page-1);
+    }
+    this.getLatestProducts();
+  },
 };
 </script>
 
 
 <style scoped>
-body {
-  margin: 0;
-  padding: 0;
-  background-color: lightblue;
-  font-family: sans-serif;
-}
 .product {
   transform: translate(-50%, -50%);
   width: 15rem;
