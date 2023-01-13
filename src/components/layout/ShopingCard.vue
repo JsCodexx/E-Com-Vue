@@ -1,36 +1,46 @@
 <template>
-  <div v-for="product in latestProducts" :key="product.id" class="product">
-    <div class="imgbox">
-      <img :src="`${product.thumbnail}`" />
+  <section class="products-wrapper">
+
+    <div>
+      <div class="row p-5">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-3" v-for="product in latestProducts" :key="product.id">
+          <div class="card m-2">
+            <div class="img-wrapper">
+              <img class="card-img img-fluid w-100 h-100" :src="product.thumbnail" alt="Vans" />
+            </div>
+            <div class="card-img-overlay d-flex justify-content-end">
+              <a href="#" class="card-link text-danger like">
+                <i class="fas fa-heart"></i>
+              </a>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">{{ product.title }}</h4>
+              <h6 class="card-subtitle mb-2 text-muted">{{ product.brand }}</h6>
+              <!-- <p class="card-text">
+                {{ product.description }}
+              </p> -->
+              <div
+                class="buy d-flex justify-content-between align-items-center"
+              >
+                <div class="price text-success">
+                  <h5 class="mt-4">${{ product.price }}</h5>
+                </div>
+                <a href="#" class="btn btn-danger mt-3"
+                  ><i class="fas fa-shopping-cart"></i> Add to Cart</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="details">
-      <h2>
-        Brand <br /><span>{{ product.title }}</span>
-      </h2>
-      <div class="price">{{ '$' + product.price }}</div>
-      <label>Other Details</label>
-      <ul>
-        <li>Stocke {{ product.stock }}</li>
-      </ul>
-      <label>Colors</label>
-      <ul class="colors">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-      <button @click="getIds" @focus="productId = product.id">
-        Add to Cart
-      </button>
-    </div>
-  </div>
-  <pagination
+  </section>
+  <!-- <pagination-card
     :totalPages="12"
     :perPage="10"
     :currentPage="currentPage"
     @pagechanged="onPageChange"
-  />
+  /> -->
 </template>
 
 <script scoped>
@@ -44,7 +54,7 @@ export default {
     latestProducts: [],
     productId: null,
     currentPage: 1,
-    limit: 9,
+    limit: 10,
     skip: 0,
   }),
   mounted() {
@@ -83,122 +93,15 @@ export default {
 
 
 <style scoped>
-.product {
-  transform: translate(-50%, -50%);
-  width: 15rem;
-  height: 21.5rem;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
+.products-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  background-color: lightblue;
-  font-family: sans-serif;
+  justify-content: space-between;
+  align-items: center;
 }
-.imgbox img {
-  width: 100%;
-  display: block;
-  margin: 20px auto 0;
-}
-.product .imgbox {
-  height: 100%;
-  box-sizing: border-box;
-}
-.details {
-  position: absolute;
-  width: 100%;
-  bottom: -145px;
-  background: #fff;
-  padding: 10px;
-  box-sizing: border-box;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  transition: 0.5s;
-}
-.details h2 {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  width: 100%;
-}
-.details h2 span {
-  font-size: 12px;
-  color: #ccc;
-  font-weight: normal;
-}
-.details .price {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-weight: bold;
-  font-size: 20px;
-}
-label {
-  display: block;
-  margin-top: 5px;
-  font-weight: bold;
-  font-size: 14px;
-}
-ul {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-ul li {
-  list-style-type: none;
-  margin: 5px 5px 0;
-  font-size: 12px;
-  font-weight: bold;
-}
-ul li:first-child {
-  margin-left: 0;
-}
-ul.colors li {
-  width: 16px;
-  height: 16px;
-}
-ul.colors li:nth-child(1) {
-  background-color: yellow;
-}
-ul.colors li:nth-child(2) {
-  background-color: red;
-}
-ul.colors li:nth-child(3) {
-  background-color: green;
-}
-ul.colors li:nth-child(4) {
-  background-color: orange;
-}
-ul.colors li:nth-child(5) {
-  background-color: lightblue;
-}
-button {
-  display: block;
-  padding: 5px;
-  color: #fff;
-  margin: 15px;
-  background: #ff4faf;
-  text-align: center;
-  text-decoration: none;
-  transition: 0.3s;
-}
-button:hover {
-  color: #000;
-}
-.product:hover .details {
-  bottom: 0;
-}
-img {
-  widows: 10rem;
-  height: 8rem;
-}
-
-@media only screen and (max-width: 600px) {
-  .tag2 {
-    display: none;
-  }
+.img-wrapper{
+  height: 20rem;
 }
 </style>

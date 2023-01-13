@@ -1,5 +1,6 @@
 <template>
   <div
+  style="overflow-x: hidden;"
     id="carouselExampleSlidesOnly h-50"
     class="carousel slide"
     data-ride="carousel"
@@ -7,6 +8,7 @@
     <div class="carousel-inner h-25">
       <div class="carousel-item active h-75">
         <img
+          
           class="d-block heroimage img-fluid"
           src="../../assets/Images/HomePage/slide1.jpg"
           alt="First slide"
@@ -39,32 +41,34 @@
     <div class="one">
       <h1>Click to Buy</h1>
     </div>
-    <div class="card-shopping">
-      <shopping-card></shopping-card>
-    </div>
+    <shoping-card></shoping-card>
   </div>
 </template>
 <script>
+import ShopingCard from '../../components/layout/ShopingCard.vue';
 export default {
-  name:'home'
+  name:'home',
+  components:{
+    ShopingCard,
+  }
 }
 </script>
 
 
 <style scoped>
 .card-shopping {
-
-  margin-left: 16rem;
+margin: 0 auto;
+  /* margin-left: 16rem; */
   /* margin: 0; */
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   gap: 2rem;
-  justify-content: center;
   display: flex;
-  margin-top: 13rem;
+  justify-content: center;
+  /* margin-top: 13rem; */
   flex-wrap: wrap;
   margin-bottom: 1rem;
-  justify-content: space-between;
-  box-sizing: border-box;
+  /* justify-content: space-between; */
+  /* box-sizing: border-box; */
 }
 .one {
   padding-top: 5rem;

@@ -18,4 +18,7 @@ export default {
 #app {
   background: #f2f2f2;
 }
+ul{
+  list-style: none;
+}
 </style>
