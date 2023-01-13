@@ -10,5 +10,14 @@ export default {
   removeProduct({ commit }, id) {
     commit('removeProcut', id);
   },
-  
+  userDetails(context) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    // console.log(user , 'this is user')
+    context.dispatch('checkAuth',user)
+  },
+  checkAuth(context,user) {
+    console.log(user , 'this is user')
+
+    context.commit('userDetail', user);
+  },
 };

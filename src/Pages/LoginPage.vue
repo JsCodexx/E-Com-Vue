@@ -44,65 +44,49 @@ export default {
     return {
       username: '',
       password: '',
+      userData: {},
     };
   },
   methods: {
     async logIn() {
       localStorage.removeItem('token');
-      const userData = {
+      const credentials = {
         username: this.username,
         password: this.password,
       };
-      console.log(userData);
+      console.log(credentials);
       await axios
-        .post('https://dummyjson.com/auth/login', {
-          username: this.username,
-          password: this.password,
-          // expiresInMins: 60, // optional
-        })
+        .post('https://dummyjson.com/auth/login', credentials)
         .then((response) => {
-          (token = response.data.token), localStorage.setItem('token', token);
+          // const userName = response.data.username;
+          // const userId = response.data.id;
 
-          this.$store.commit({
-            type: 'Store/setToken',
-            value: token,
-          });
-          localStorage.setItem('token', token);
-          this.$router.push('/home');
+          // const profileImage = response.data.image;
+          // const firstName = response.data.firstName;
+          // const lastName = response.data.lastName;
+
+          console.log('hi i am here');
+    localStorage.setItem('token',JSON.stringify(response.data.token))
+          localStorage.setItem('user', JSON.stringify(response.data));
+          // console.log(user, 'this is the user');
+          // localStorage.setItem(userName);
+          // localStorage.setItem(userId);
+
+          // localStorage.setItem(profileImage);
+          // localStorage.setItem(firstName);
+          // localStorage.setItem(lastName);
+          // console.log(token);
+          console.log('hi i am here');
+
+          this.$store.dispatch('userDetails');
+
+          this.$router.push({ name: 'home' });
+          // (token = response.data.token), localStorage.setItem('token', token);
         })
 
         .catch((error) => {
           console.log(JSON.stringify(error));
         });
-      // this.$store.commit('setToken', token);
-
-      // axios.defaults.headers.common['Authorization'] = 'Token ' + token;
-      // console.log(response);
-
-      // axios
-      //   .fetch('https://dummyjson.com/auth/login', userData)
-      //   .then((response) => {
-      //     console.log(response.data);
-      // const username = response.data.username;
-      // const token = response.data.token;
-      // this.$store.commit({
-      //   type: 'Login/setToken',
-      //   value: token,
-      // });
-      // this.$store.commit('setToken', token);
-
-      // axios.defaults.headers.common['Authorization'] = 'Token ' + token;
-      // console.log(response);
-      // localStorage.setItem('token', token);
-      // localStorage.setItem('username', username);
-
-      // const toPath = this.$route.query.to || '/home';
-
-      // this.$router.push(toPath);
-      // })
-      // .catch((error) => {
-      // console.log(JSON.stringify(error));
-      // });
     },
   },
 };

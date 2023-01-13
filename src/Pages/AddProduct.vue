@@ -51,8 +51,8 @@
         />
       </div>
       <router-link to="/home">
-        <button type="submit" class="btn btn-dark" @click="AddNewProduct">
-          Add  Product
+        <button type="submit" class="btn btn-dark" @click="addNewProduct">
+          Add Product
         </button>
       </router-link>
     </form>
@@ -60,57 +60,43 @@
 </template>
 
 <script>
-import axios  from 'axios';
-export default{
-  name:'addProducts',
-    data() {
-        return {
-            newProduct:{
-                title: null,
-                stock: null,
-                price: null,
-                description: null,
-                thumbnail: null,
-                latestItems:[],
-            }
-        }
+import axios from 'axios';
+export default {
+  name: 'addProducts',
+  data() {
+    return {
+      newProduct: {
+        title: null,
+        stock: null,
+        price: null,
+        description: null,
+        thumbnail: null,
+        latestProduct: {},
+      },
+    };
+  },
+  methods: {
+    // getLatestProducts() {},
+    addNewProduct() {
+      const alpha = axios.post('https://dummyjson.com/products/add', {
+        title: this.newProduct.title,
+        price: this.newProduct.price,
+        thumbnail: this.newProduct.thumbnail,
+        stock: this.newProduct.stock,
+      });
+      this.latestProduct = alpha.data;
+      alert(this.latestProduct);
+      console.log(this.latestProduct);
     },
-    methods: {
-        getLatestProducts() {
-      const alpha = axios
-        .post('https://dummyjson.com/products/add', {
-          title: this.newProduct.title,
-          price: this.newProduct.price,
-          thumbnail: this.newProduct.thumbnail,
-          stock: this.newProduct.stock,
-          discountPercentage: this.newProduct.discountPercentage,
-        })
-        .then((response) => {
-          this.latestItems = response.data;
-          console.log(response)
-          this.$store.commit({
-            type: 'Cart/newProduct',
-            value: this.newProduct2,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    AddNewProduct() {
-      this.getLatestProducts();
-    },
-    },
-}
+  },
+};
 </script>
 
 
 <style scoped>
-
-.form-page{
-padding-top: 1rem;
-padding-bottom: 4rem;
-margin: 1rem;
+.form-page {
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  margin: 1rem;
 }
-
 </style>

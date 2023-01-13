@@ -1,7 +1,7 @@
-// import vue from 'vue';
+
 import { createStore } from 'vuex';
 
-// vue.use(Vuex)
+
 
 import state from './state';
 import actions from './actions';

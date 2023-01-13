@@ -25,8 +25,12 @@
       </button>
     </div>
   </div>
-
-  
+  <pagination
+    :totalPages="12"
+    :perPage="10"
+    :currentPage="currentPage"
+    @pagechanged="onPageChange"
+  />
 </template>
 
 <script scoped>
@@ -43,10 +47,6 @@ export default {
     limit: 9,
     skip: 0,
   }),
-  created() {
-    this.noOfProducts = 9;
-    this.productsToSkip = 0;
-  },
   mounted() {
     this.getLatestProducts();
   },
@@ -72,10 +72,9 @@ export default {
     },
   },
   onPageChange(page) {
-    this.currentPage=page;
-    console.log(this.currentPage)
-    if(page){
-      this.skip = this.limit*(page-1);
+    this.currentPage = page;
+    if (page) {
+      this.skip = this.limit * (page - 1);
     }
     this.getLatestProducts();
   },

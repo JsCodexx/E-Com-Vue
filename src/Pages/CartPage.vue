@@ -21,13 +21,11 @@
                       <td>
                         <figure class="product-image-container">
                           <a href="#!" class="product-image">
-                            <img
-                              :src=" item.thumbnail "
-                              alt="product"
-                            />
+                            <img :src="item.thumbnail" alt="product" />
                           </a>
 
-                          <button @click.prevent="removeItem(item.id)"
+                          <button
+                            @click.prevent="removeItem(item.id)"
                             class="btn-remove icon-cancel"
                             title="Remove Product"
                           ></button>
@@ -45,7 +43,9 @@
                         </h5>
                       </td>
                       <td class="text-right">
-                        <span class="subtotal-price"> {{ (item.price)-100 }}</span>
+                        <span class="subtotal-price">
+                          {{ item.price - 100 }}</span
+                        >
                       </td>
                     </tr>
                   </tbody>
@@ -110,15 +110,21 @@
                     </tr>
                     <tr>
                       <td><b>Total</b></td>
-                      <td><b>${{ subTotal }}.00</b></td>
+                      <td>
+                        <b>${{ subTotal }}.00</b>
+                      </td>
                     </tr>
                   </tfoot>
                 </table>
 
                 <div class="checkout-methods">
-                  <a href="#!" class="btn btn-block btn-dark"
-                    >Proceed to Checkout <i class="fa fa-arrow-right"></i
-                  ></a>
+                  <button
+                    @click="checkAuthentication"
+                    href="#!"
+                    class="btn btn-block btn-dark"
+                  >
+                    Proceed to Checkout <i class="fa fa-arrow-right"></i>
+                  </button>
                 </div>
               </div>
               <!-- End .cart-summary -->
@@ -137,31 +143,33 @@ export default {
   data() {
     return {
       cartData: '',
-    
     };
   },
   mounted() {
-    // this.getCart();
+    this.checkAuthentication();
   },
   methods: {
-
-
-    removeItem(id){
-      console.log( ' id is', id)
-      this.$store.dispatch('removeProduct' , id )
-    }
-
+    removeItem(id) {
+      console.log(' id is', id);
+      this.$store.dispatch('removeProduct', id);
+    },
+    checkAuthentication() {
+      if(!this.$store.state.token){
+        this.$router.push('/login')
+      }
+      
+    },
   },
   computed: {
     cart() {
       console.log(this.$store.state.cart, 'imhere');
       return this.$store.state.cart;
     },
-    subTotal(){
-      let price = 0
-      this.$store.state.cart.forEach(item => price += item.price)
+    subTotal() {
+      let price = 0;
+      this.$store.state.cart.forEach((item) => (price += item.price));
       return price;
-    }
+    },
   },
 };
 </script>
