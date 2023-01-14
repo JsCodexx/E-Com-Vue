@@ -1,6 +1,126 @@
 <template>
-  <div class="nav-wrapper">
-    <nav
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <router-link to="/home" class="navbar-brand" href="#"
+        >BUY4YOU</router-link
+      >
+      <form class="d-flex mt-3" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          v-model="searchText"
+        />
+        <button
+          @click.prevent="searchValue"
+          class="btn btn-outline-success"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header bg-dark">
+          <h5
+            class="offcanvas-title text-light bg-dark"
+            id="offcanvasNavbarLabel"
+          >
+            BUY4YOU
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body bg-dark">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <router-link
+                to="/home"
+                class="nav-link active text-light bg-dark"
+                aria-current="page"
+                href="#"
+                >Home</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <router-link
+                to="/addproducts"
+                class="nav-link active text-light bg-dark"
+                aria-current="page"
+                href="#"
+                >AddProduct</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <router-link
+                to="/catagories"
+                class="nav-link text-light bg-dark"
+                href="#"
+                >Categories</router-link
+              >
+            </li>
+            <li class=" nav-item">
+              <router-link to="/Cart" class="nav-link text-light bg-dark">
+                CART</router-link
+              >
+            </li>
+          
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-light bg-dark"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                User
+              </a>
+              <ul class="dropdown-menu bg-dark">
+                <li>
+                  <router-link
+                    class="dropdown-item text-light bg-dark"
+                    to="/profilePage"
+                    >Dashboard</router-link
+                  >
+                </li>
+                <li>
+                  <router-link
+                    class="dropdown-item text-light bg-dark"
+                    to="/login"
+                    >Login</router-link
+                  >
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+              
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- 
+ <nav
       class="navbar navbar-expand-lg navbar-light sticky-top nav"
       id="navbar"
     >
@@ -37,11 +157,6 @@
           <router-link to="/Cart"
             ><i class="fa fa-shopping-cart fa-xl btn mr-5"></i
           ></router-link>
-          <!-- <li class="nav-item ">
-          <router-link to="/AllProducts" class="nav-link  cat-bbtn "
-            >All Products</router-link
-          >
-        </li> -->
         </ul>
         <div class="search-bar">
           <form class="form-inline my-2 my-lg-0">
@@ -99,8 +214,7 @@
           </div>
         </div>
       </div>
-    </nav>
-  </div>
+    </nav> -->
 </template>
 <script>
 export default {
@@ -111,6 +225,7 @@ export default {
   },
   methods: {
     searchValue() {
+      console.log(this.searchText);
       this.$router.push({
         name: 'SearchProducts',
         params: { id: this.searchText },
@@ -122,7 +237,7 @@ export default {
 
 <style scoped>
 .navbar {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 .nav-wrapper,

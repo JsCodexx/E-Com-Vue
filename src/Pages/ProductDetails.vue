@@ -145,8 +145,8 @@ export default {
   data() {
     return {
       product: {},
-      // quantity: '1',
-      productId:'',
+      quantity: '1',
+      productId: '',
     };
   },
   created() {
@@ -168,8 +168,6 @@ export default {
         });
     },
     addCart() {
-      // console.log(this.$store.dispatch('addProdcutToCart'))
-    // if()
       this.$store.dispatch('addProdcutToCart', {
         id: this.product.id,
         stock: this.product.stock,

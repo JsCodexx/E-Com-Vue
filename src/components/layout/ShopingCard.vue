@@ -1,12 +1,19 @@
 <template>
   <section class="products-wrapper">
-
     <div>
       <div class="row p-5">
-        <div class="col-12 col-sm-8 col-md-6 col-lg-3" v-for="product in latestProducts" :key="product.id">
+        <div
+          class="col-12 col-sm-8 col-md-6 col-lg-3"
+          v-for="product in latestProducts"
+          :key="product.id"
+        >
           <div class="card m-2">
             <div class="img-wrapper">
-              <img class="card-img img-fluid w-100 h-100" :src="product.thumbnail" alt="Vans" />
+              <img
+                class="card-img img-fluid w-100 h-100"
+                :src="product.thumbnail"
+                alt="Vans"
+              />
             </div>
             <div class="card-img-overlay d-flex justify-content-end">
               <a href="#" class="card-link text-danger like">
@@ -16,18 +23,17 @@
             <div class="card-body">
               <h4 class="card-title">{{ product.title }}</h4>
               <h6 class="card-subtitle mb-2 text-muted">{{ product.brand }}</h6>
-              <!-- <p class="card-text">
-                {{ product.description }}
-              </p> -->
+
               <div
                 class="buy d-flex justify-content-between align-items-center"
               >
                 <div class="price text-success">
-                  <h5 class="mt-4">${{ product.price }}</h5>
+                  <h5 class="mt-4">Starting From ${{ product.price }}</h5>
                 </div>
-                <a href="#" class="btn btn-danger mt-3"
-                  ><i class="fas fa-shopping-cart"></i> Add to Cart</a
-                >
+                <!-- on focus storing id of specific id of product and sending it as a params in the function -->
+                <button @click="fetchProductId" @focus="productId = product.id">
+                  View Details
+                </button>
               </div>
             </div>
           </div>
@@ -35,12 +41,12 @@
       </div>
     </div>
   </section>
-  <!-- <pagination-card
+  <pagination-card
     :totalPages="12"
     :perPage="10"
     :currentPage="currentPage"
     @pagechanged="onPageChange"
-  /> -->
+  />
 </template>
 
 <script scoped>
@@ -57,9 +63,7 @@ export default {
     limit: 10,
     skip: 0,
   }),
-  mounted() {
-    this.getLatestProducts();
-  },
+
   methods: {
     getLatestProducts() {
       const alpha = axios
@@ -73,19 +77,24 @@ export default {
           console.log(error);
         });
     },
-    getIds() {
-      console.log(this.latestProducts.id, this.productId);
+    fetchProductId() {
+      console.log( 'this is the id')
+      //  this will push to the Detail Page with id of specific product
       this.$router.push({
         name: 'ProductDetails',
         params: { id: this.productId },
       });
     },
+    onPageChange(page) {
+      this.currentPage = page;
+      if (page) {
+        this.skip = this.limit * (page - 1);
+      }
+      this.getLatestProducts();
+    },
   },
-  onPageChange(page) {
-    this.currentPage = page;
-    if (page) {
-      this.skip = this.limit * (page - 1);
-    }
+
+  created() {
     this.getLatestProducts();
   },
 };
@@ -101,7 +110,7 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-.img-wrapper{
+.img-wrapper {
   height: 20rem;
 }
 </style>

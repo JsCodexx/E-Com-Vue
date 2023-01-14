@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <!-- <div>
     <div class="row p-5">
       <div
-        v-for="product in ProductCatagories"
-        :key="product.id"
+        v-for="category in ProductCatagories"
+        :key="category.id"
         class="col-12 col-sm-8 col-md-6 col-lg-3"
       >
         <div class="card m-2">
@@ -20,29 +20,24 @@
             </a>
           </div>
           <div class="card-body">
-            <h4 class="card-title">{{ product.title }}</h4>
-            <h6 class="card-subtitle mb-2 text-muted">{{ product.brand }}</h6>
-            <!-- <p class="card-text">
-                {{ product.description }}
-              </p> -->
+            <h4 class="card-title">{{ category }}</h4>
+
             <div class="buy d-flex justify-content-between align-items-center">
-              <div class="price text-success">
-                <h5 class="mt-4">${{ product.price }}</h5>
-              </div>
               <button
+                class="btn btn-danger mt-3"
+                data-abc="true"
                 @click="getId"
                 @focus="singleProducts = category"
-                class="btn btn-danger mt-3"
               >
-                <i class="fas fa-shopping-cart"></i> Add to Cart
+                <i ></i> View All Products
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- <div class="d-flex flex-wrap justify-content-center" style="background: salmon; margin-block: 5rem;">
+  </div> -->
+  <div class="d-flex flex-wrap justify-content-center" style="background: salmon; margin-block: 5rem;">
     <div class="pack-section" v-for="category in ProductCatagories">
       <ul class="pack-grig">
         <li>
@@ -54,7 +49,7 @@
               <button
                 class="btn btn-outline-success btn-sm"
                 data-abc="true"
-                @click="getId"
+                @click="fetchProductId"
                 @focus="singleProducts = category"
               >
                 View Products
@@ -64,7 +59,7 @@
         </li>
       </ul>
     </div>
-  </div> -->
+  </div>
 </template>
 <script>
 import axios from 'axios';
@@ -77,10 +72,12 @@ export default {
     prodcutImage: '',
   }),
   mounted() {
+    //getting all categories names
     this.getProductsCatagories();
   },
   methods: {
     getProductsCatagories() {
+      //getting all categories
       axios
         .get('https://dummyjson.com/products/categories')
         .then((response) => {
@@ -93,10 +90,7 @@ export default {
         });
     },
     getProductsByCatagories(cat) {
-      // console.log(cat);
       for (let i = 0; i <= cat.length - 2; i++) {
-        // console.log(cat);
-
         const ProductsByCatagories = axios
           .get(`https://dummyjson.com/products/category/${cat[i]}`)
           .then((response) => {
@@ -107,14 +101,16 @@ export default {
           });
       }
     },
-    getId() {
-    console.log(this.singleProducts )
+    fetchProductId() {
+      console.log(this.singleProducts);
       this.$router.push({
         name: 'SingleProduct',
         params: { productCata: this.singleProducts },
       });
     },
+
     getProducts() {
+      // to get a sample image for the category
       const getProducts = axios
         .get('https://dummyjson.com/products')
         .then((response) => {

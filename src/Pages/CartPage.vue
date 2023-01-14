@@ -2,7 +2,7 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-12">
+        <div class="col-sm-12 col-md-12 mt-5">
           <div class="row cart-wrapper">
             <div class="col-md-12 col-lg-8">
               <div class="cart-table-container">

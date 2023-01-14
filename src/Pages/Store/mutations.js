@@ -1,20 +1,22 @@
 export default {
   addToCart(state, { id, stock, title, thumbnail, price, quantity }) {
-    // console.log(state.cart.product.id)
-    // let productInCart = state.cart.find((item) => {
-    //   return item.id === id;
-    // });
-    // if (productInCart) {
-    //   productInCart.quantity += 1;
-    // }
-    state.cart.push({
-      stock,
-      title,
-      thumbnail,
-      price,
-      quantity,
-      id,
+    console.log(id);
+    let productInCart = state.cart.find((item) => {
+      return item.id === id;
     });
+    if (productInCart) {
+      productInCart.quantity +=1;
+    } else {
+      state.cart.push({
+        stock,
+        title,
+        thumbnail,
+        price,
+        quantity,
+        id,
+      });
+    }
+
     // console.log(state,'mutation');
   },
   removeProcut(state, id) {

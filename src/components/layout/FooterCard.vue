@@ -1,50 +1,134 @@
 <template>
-  <div class="container1 ">
-    <div class="tags tags1">
-      <a href="#">stream millions of songs</a>
-      <a href="#">Everything for your business</a>
-      <a href="#">box office mojo</a>
-      <a href="#">Kindle direct publishing</a>
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-light text-muted ">
+    <!-- Section: Social media -->
+    <section
+      class="
+        d-flex
+        justify-content-center justify-content-lg-between
+        p-4
+        border-bottom
+      "
+    >
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <!-- Left -->
+
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>Buy4You
+            </h6>
+            <p>
+           
+              our Mission is to build a standard that everyone can meet
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Goals</h6>
+            <p>
+              <a href="#!" class="text-reset">Availbility</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Reliability</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Support</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Up To The Mark</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+            <p>
+              <a href="#!" class="text-reset">Carrers</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Customer Service</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Find Bug</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Our Goal</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3"></i> 893-R1,Khayaban-e-Firdousi, Johar Town, Lahore, Pakistan</p>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              hr@pf.com.pk
+            </p>
+            <p><i class="fas fa-phone me-3"></i> +92-309-555-2608</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+      © 2009 Copyright:
+      <a class="text-reset fw-bold" href="https://pf.com.pk/"
+        >Programmers Force</a
+      >
     </div>
-    <div class="tags tags1">
-      <a href="#">Amazon Advertising</a>
-      <a href="#">Amazon global</a>
-      <a href="#">comiXology</a>
-      <a href="#">Prime video direct</a>
-      <a href="#">Blink</a>
-    </div>
-    <div class="tags">
-      <a href="#">Amazon Drive</a>
-      <a href="#">Home Services</a>
-      <a href="#">DP Review</a>
-      <a href="#">ShopDop</a>
-    </div>
-    <div class="tags">
-      <a href="#">6PM</a>
-      <a href="#">Amazon Ignites</a>
-      <a href="#">Fabric</a>
-      <a href="#">Woot!</a>
-      <a href="#">Amazon Subscription</a>
-    </div>
-    <div class="tags">
-      <a href="#">AbeBooks</a>
-      <a href="#">Amazon Web Service</a>
-      <a href="#">Goodreads</a>
-      <a href="#">Zappos</a>
-      <a href="#">PillPack</a>
-    </div>
-    <div class="tags">
-      <a href="#">ACX</a>
-      <a href="#">Audible</a>
-      <a href="#">IMDb</a>
-      <a href="#">Ring</a>
-    </div>
-  </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
 </template>
 
 
 <style >
-
 /* footer */
 
 .tags a {
@@ -76,8 +160,5 @@
   .tags1 {
     display: none;
   }
-
-
 }
-
 </style>

@@ -12,16 +12,13 @@
             <h5 class="card-title font-weight-bold">{{product.title  }}</h5>
             <p class="card-text">{{ '$' + product.price }}</p>
             <router-link :to="{name:'ProductDetails' , params:{id:product.id}}"> <button
-              class="btn btn-dark text-uppercase details-bbtn"
-              @click="getIds"
+              class="btn btn-danger mt-3"
               @focus="productid = product.id"
             >
               View Details</button
             ></router-link>
            <br />
-            <a href="#" class="btn cart px-auto fa-solid fa-cart-shopping"
-              >ADD TO CART</a
-            >
+         
           </div>
         </div>
       </div>

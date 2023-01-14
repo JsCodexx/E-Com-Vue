@@ -39,7 +39,7 @@
   </div>
   <div>
     <div class="one">
-      <h1>Click to Buy</h1>
+      <h1>Featured Products</h1>
     </div>
     <shoping-card></shoping-card>
   </div>
