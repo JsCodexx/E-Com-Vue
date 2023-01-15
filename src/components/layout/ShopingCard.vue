@@ -40,7 +40,9 @@
       </div>
     </div>
   </section>
+
   <pagination-card
+    class="wrapper"
     :totalPages="12"
     :perPage="12"
     :currentPage="currentPage"
@@ -103,6 +105,9 @@ export default {
 <style scoped>
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
+.wrapper {
+  width: 75%;
+}
 .products-wrapper {
   display: flex;
   flex-wrap: wrap;

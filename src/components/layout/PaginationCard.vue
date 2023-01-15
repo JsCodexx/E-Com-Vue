@@ -1,52 +1,58 @@
 <template>
-  <ul class="pagination flex justify-center gap-3 mt-10">
-    <li class="pagination-item">
-      <button type="button" @click="onClickFirstPage" :disabled="isInFirstPage">
-        First
-      </button>
-    </li>
+  <div class="wrapper">
+    <ul class="pagination">
+      <li class="pagination-item">
+        <button
+          type="button"
+          @click="onClickFirstPage"
+          :disabled="isInFirstPage"
+        >
+          First
+        </button>
+      </li>
 
-    <li class="pagination-item">
-      <button
-        type="button"
-        @click="onClickPreviousPage"
-        :disabled="isInFirstPage"
+      <li class="pagination-item">
+        <button
+          type="button"
+          @click="onClickPreviousPage"
+          :disabled="isInFirstPage"
+        >
+          Previous
+        </button>
+      </li>
+
+      <!-- Visible Buttons Start -->
+
+      <li
+        v-for="page in pages"
+        :key="page.name"
+        class="pagination-item"
+        :class="{ active: isPageActive(page.name) }"
       >
-        Previous
-      </button>
-    </li>
+        <button
+          type="button"
+          @click="onClickPage(page.name)"
+          :disabled="page.isDisabled"
+        >
+          {{ page.name }}
+        </button>
+      </li>
 
-    <!-- Visible Buttons Start -->
+      <!-- Visible Buttons End -->
 
-    <li
-      v-for="page in pages"
-      :key="page.name"
-      class="pagination-item"
-      :class="{ active: isPageActive(page.name) }"
-    >
-      <button
-        type="button"
-        @click="onClickPage(page.name)"
-        :disabled="page.isDisabled"
-      >
-        {{ page.name }}
-      </button>
-    </li>
+      <li class="pagination-item">
+        <button type="button" @click="onClickNextPage" :disabled="isInLastPage">
+          Next
+        </button>
+      </li>
 
-    <!-- Visible Buttons End -->
-
-    <li class="pagination-item">
-      <button type="button" @click="onClickNextPage" :disabled="isInLastPage">
-        Next
-      </button>
-    </li>
-
-    <li class="pagination-item">
-      <button type="button" @click="onClickLastPage" :disabled="isInLastPage">
-        Last
-      </button>
-    </li>
-  </ul>
+      <li class="pagination-item">
+        <button type="button" @click="onClickLastPage" :disabled="isInLastPage">
+          Last
+        </button>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -136,6 +142,12 @@ export default {
 };
 </script>
 <style>
+.wrapper {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .pagination {
   list-style-type: none;
 }
@@ -150,7 +162,7 @@ export default {
 }
 
 .active {
-  background-color: rgb(37, 9, 243,43);
+  background-color: rgb(37, 9, 243, 43);
   color: rgb(251, 250, 250);
 }
 </style>
