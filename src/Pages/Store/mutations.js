@@ -5,7 +5,7 @@ export default {
       return item.id === id;
     });
     if (productInCart) {
-      productInCart.quantity += 1;
+      productInCart.quantity++;
     } else {
       state.cart.push({
         stock,
@@ -17,7 +17,6 @@ export default {
       });
     }
 
-    // console.log(state,'mutation');
   },
   removeProcut(state, id) {
     state.cart = state.cart.filter((cartProducts) => cartProducts.id != id);

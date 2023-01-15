@@ -38,11 +38,11 @@
       >
         <div class="row">
           <div class="col-lg-2 order-lg-1 order-2">
-            <ul class="image_list image-wrapper">
+            <!-- <ul class="image_list image-wrapper">
               <li><img class="zoom" :src="product.images[0]" alt="" /></li>
               <li><img class="zoom" :src="product.images[1]" alt="" /></li>
               <li><img class="zoom" :src="product.images[2]" alt="" /></li>
-            </ul>
+            </ul> -->
           </div>
           <div class="col-lg-4 order-lg-2 order-1">
             <div class="image_selected">

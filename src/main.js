@@ -9,7 +9,7 @@ import router from './router';
 // import vuetify from './vuetify';
 import axios from 'axios';
 import store from './Pages/Store';
-axios.defaults.baseURL = 'http://127.0.0.1:5173';
+// axios.defaults.baseURL = 'http://127.0.0.1:5173';
 
 
 
