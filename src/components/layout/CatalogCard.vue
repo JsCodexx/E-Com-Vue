@@ -1,5 +1,5 @@
 <template>
-  <!-- <div>
+  <div>
     <div class="row p-5">
       <div
         v-for="category in ProductCatagories"
@@ -10,42 +10,19 @@
           <div class="img-wrapper">
             <img
               class="card-img img-fluid w-100 h-100"
-              :src="`${this.prodcutImage}`"
+              :src="prodcutImage"
               alt="Vans"
             />
           </div>
-          <div class="card-img-overlay d-flex justify-content-end">
+          <!-- <div class="card-img-overlay d-flex justify-content-end">
             <a href="#" class="card-link text-danger like">
               <i class="fas fa-heart"></i>
             </a>
-          </div>
+          </div> -->
           <div class="card-body">
             <h4 class="card-title">{{ category }}</h4>
 
             <div class="buy d-flex justify-content-between align-items-center">
-              <button
-                class="btn btn-danger mt-3"
-                data-abc="true"
-                @click="getId"
-                @focus="singleProducts = category"
-              >
-                <i ></i> View All Products
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <div class="d-flex flex-wrap justify-content-center" style="background: salmon; margin-block: 5rem;">
-    <div class="pack-section" v-for="category in ProductCatagories">
-      <ul class="pack-grig">
-        <li>
-          <div class="pack-box category-div">
-            <img :src="`${this.prodcutImage}`" alt="" />
-            <div class="pack-info">
-              <h3>{{ category }}</h3>
-              <p>The time you want to escape</p>
               <button
                 class="btn btn-outline-success btn-sm"
                 data-abc="true"
@@ -56,8 +33,8 @@
               </button>
             </div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -77,7 +54,6 @@ export default {
   },
   methods: {
     getProductsCatagories() {
-      //getting all categories
       axios
         .get('https://dummyjson.com/products/categories')
         .then((response) => {
@@ -89,11 +65,13 @@ export default {
           console.log(error);
         });
     },
-    getProductsByCatagories(cat) {
-      for (let i = 0; i <= cat.length - 2; i++) {
+    getProductsByCatagories(products) {
+      //this method will get the products of the same category
+      for (let i = 0; i <= products.length - 2; i++) {
         const ProductsByCatagories = axios
-          .get(`https://dummyjson.com/products/category/${cat[i]}`)
+          .get(`https://dummyjson.com/products/category/${products[i]}`)
           .then((response) => {
+            //storing the result in an array
             this.ProductbyCatagories.push(response.data);
           })
           .catch((error) => {
@@ -102,7 +80,7 @@ export default {
       }
     },
     fetchProductId() {
-      console.log(this.singleProducts);
+  //on click this function will go to singleProduct page with the specific id of the clicked product
       this.$router.push({
         name: 'SingleProduct',
         params: { productCata: this.singleProducts },
@@ -114,7 +92,8 @@ export default {
       const getProducts = axios
         .get('https://dummyjson.com/products')
         .then((response) => {
-          this.prodcutImage = response.data.products[0].thumbnail;
+          console.log(response.data.products[1].thumbnail)
+          this.prodcutImage = response.data.products[1].thumbnail;
         })
         .catch((error) => {
           console.log(error);

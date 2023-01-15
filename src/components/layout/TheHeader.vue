@@ -78,14 +78,14 @@
               >
             </li>
             <li class=" nav-item">
-              <router-link to="/Cart" class="nav-link text-light bg-dark">
+              <router-link to="/Cart" class="nav-link text-light bg-dark fa-solid fa-cart-shopping">
                 CART</router-link
               >
             </li>
           
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle text-light bg-dark"
+                class="nav-link dropdown-toggle text-light bg-dark fa fa-user"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -119,102 +119,7 @@
       </div>
     </div>
   </nav>
-  <!-- 
- <nav
-      class="navbar navbar-expand-lg navbar-light sticky-top nav"
-      id="navbar"
-    >
-      <a class="navbar-brand nav-links">B4Buy</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <router-link to="/home" class="nav-link"
-              >Home <span class="sr-only"></span
-            ></router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/addproducts" class="nav-link" href="#"
-              >Add Product</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/catagories" class="nav-link cat-bbtn"
-              >Catagories</router-link
-            >
-          </li>
-          <router-link to="/Cart"
-            ><i class="fa fa-shopping-cart fa-xl btn mr-5"></i
-          ></router-link>
-        </ul>
-        <div class="search-bar">
-          <form class="form-inline my-2 my-lg-0">
-            <input
-              class="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              v-model="searchText"
-            />
-
-            <button
-              class="btn btn-outline-success my-2 my-sm-0 nav-links"
-              type="submit "
-              @click.prevent="searchValue"
-            >
-              Search
-            </button>
-          </form>
-        </div>
-        <div>
-          <div class="collapse navbar-collapse" id="navbar-list-4">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <img
-                    src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
-                    width="40"
-                    height="40"
-                    class="rounded-circle"
-                  />
-                </a>
-                <div
-                  class="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <router-link class="dropdown-item" to="/profilePage"
-                    >Dashboard</router-link
-                  >
-                  <router-link class="dropdown-item" to="/login"
-                    >LogIn</router-link
-                  >
-                  <a class="dropdown-item" href="#">Log Out</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav> -->
+ 
 </template>
 <script>
 export default {
@@ -224,8 +129,8 @@ export default {
     };
   },
   methods: {
+    //this method will pass the searched text to the SearchProducts page
     searchValue() {
-      console.log(this.searchText);
       this.$router.push({
         name: 'SearchProducts',
         params: { id: this.searchText },

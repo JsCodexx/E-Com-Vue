@@ -58,11 +58,7 @@
 
                 <table class="table table-totals">
                   <tbody>
-                    <tr>
-                      <td>Subtotal</td>
-                      <td>$17.90</td>
-                    </tr>
-
+                  
                     <tr>
                       <td colspan="2" class="text-left promo-code-area">
                         <h3>Promo Code</h3>
@@ -101,12 +97,8 @@
 
                   <tfoot>
                     <tr>
-                      <td>Other charges</td>
-                      <td>$17.90</td>
-                    </tr>
-                    <tr>
                       <td>Delivery charges</td>
-                      <td>$17.90</td>
+                      <td>Free delivery </td>
                     </tr>
                     <tr>
                       <td><b>Total</b></td>
@@ -150,10 +142,12 @@ export default {
   },
   methods: {
     removeItem(id) {
-      console.log(' id is', id);
+      //this function will send the id of product to be removed from the cart
       this.$store.dispatch('removeProduct', id);
     },
     checkAuthentication() {
+      // checking authentication before adding item to the cart 
+      //checking if the token exist in local storage
       if(!this.$store.state.token){
         this.$router.push('/login')
       }
@@ -162,10 +156,10 @@ export default {
   },
   computed: {
     cart() {
-      console.log(this.$store.state.cart, 'imhere');
       return this.$store.state.cart;
     },
     subTotal() {
+      //calculating the total price of all the items to be added
       let price = 0;
       this.$store.state.cart.forEach((item) => (price += item.price));
       return price;

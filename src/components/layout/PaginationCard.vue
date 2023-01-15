@@ -141,16 +141,16 @@ export default {
 }
 .pagination-item {
   display: inline-block;
-  border: 1px solid lightgray;
+  border: 1px solid rgb(4, 4, 4);
   padding: 5px 12px;
   border-radius: 5px;
 }
 .pagination-item:hover {
-  background: lightgray;
+  background: rgb(5, 235, 170);
 }
 
 .active {
-  background-color: pink;
-  color: #000;
+  background-color: rgb(37, 9, 243,43);
+  color: rgb(251, 250, 250);
 }
 </style>

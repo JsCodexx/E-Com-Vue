@@ -1,36 +1,32 @@
 <template>
-  <div class="container-fluid">
-    <div class="row" id="login">
-      <!-- <div
-      <img src="../assets/Images/HomePage/catagories (1).jpg" alt="">
-        class="
-          col-xs-12 col-md-10 col-md-offset-1 col-lg-2 col-lg-offset-3
-          text-center
-        "
-        id="left"
-      >
-        <i class="glyphicon glyphicon-road"></i>
-        <h2>Memeway</h2>
-        <h4>Like highway but way better.</h4>
-      </div> -->
+  <div class="wrapper">
+    <div class="container">
+      <div class="col-md-9 card mx-auto d-flex flex-row px-0">
+        <div class="img-left d-md-flex d-none"></div>
 
-      <div
-        class="col-xs-12 col-md-10 col-md-offset-1 col-lg-4 col-lg-offset-0"
-        id="right"
-      >
-        <h1 class="text-center">Log In</h1>
-
-        <div id="username">
-          <span>Username:</span>
-          <input type="text" placeholder="username" v-model="username" />
+        <div class="card-body d-flex flex-column justify-content-center">
+          <h4 class="title text-center mt-4 pb-3">Login into accont</h4>
+          <form class="col-sm-10 col-12 mx-auto">
+            <div class="form-group py-3">
+              <input type="text" placeholder="username" v-model="username" />
+            </div>
+            <div class="form-group py-3 ">
+              <input
+                type="password"
+                placeholder="Password"
+                v-model="password"
+              />
+            </div>
+            <div class="">
+              <input
+                @click.prevent="logIn"
+                type="button"
+                class="btn btn-outline-dark d-block w-100"
+                value="Login"
+              />
+            </div>
+          </form>
         </div>
-
-        <div id="password">
-          <span>Password:</span>
-          <input type="password" placeholder="*********" v-model="password" />
-        </div>
-
-        <button @click.prevent="logIn">Log In</button>
       </div>
     </div>
   </div>
@@ -58,30 +54,18 @@ export default {
       await axios
         .post('https://dummyjson.com/auth/login', credentials)
         .then((response) => {
-          // const userName = response.data.username;
-          // const userId = response.data.id;
-
-          // const profileImage = response.data.image;
-          // const firstName = response.data.firstName;
-          // const lastName = response.data.lastName;
+     
 
           console.log('hi i am here');
-    localStorage.setItem('token',JSON.stringify(response.data.token))
+          localStorage.setItem('token', JSON.stringify(response.data.token));
           localStorage.setItem('user', JSON.stringify(response.data));
-          // console.log(user, 'this is the user');
-          // localStorage.setItem(userName);
-          // localStorage.setItem(userId);
-
-          // localStorage.setItem(profileImage);
-          // localStorage.setItem(firstName);
-          // localStorage.setItem(lastName);
-          // console.log(token);
+        
           console.log('hi i am here');
 
           this.$store.dispatch('userDetails');
 
           this.$router.push({ name: 'home' });
-          // (token = response.data.token), localStorage.setItem('token', token);
+       
         })
 
         .catch((error) => {
@@ -93,239 +77,43 @@ export default {
 </script>
 
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
-
-@media (max-width: 991px) {
-  #login {
-    margin: 0px;
-    main-height: 100vh;
-    justify-content: center;
-  }
-
-  #left {
-    padding: 25px;
-    box-shadow: -0px -7px 15px #c14c2c inset;
-    min-height: 10vh;
-  }
-
-  #right {
-    padding: 50px;
-    min-height: 90vh;
-  }
-
-  button {
-    width: 80%;
-  }
-
-  h1 {
-    margin-top: -20px !important;
-  }
-}
-
-@media (min-width: 991px) and (max-width: 1200px) {
-  #left {
-    padding: 50px;
-    box-shadow: -0px -7px 15px #c14c2c inset;
-  }
-
-  #right {
-    padding: 50px;
-  }
-
-  #login {
-    margin: 0px;
-    margin-top: 75px;
-    margin-bottom: 75px;
-    justify-content: center;
-  }
-
-  #username,
-  #password {
-    width: 80%;
-    margin: auto;
-  }
-
-  button {
-    width: 70%;
-  }
-
-  h1 {
-    margin-top: -20px !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  #left {
-    box-shadow: -6px -0px 10px #af4528 inset;
-    margin-top: 10px;
-    height: 480px;
-  }
-
-  #right {
-    height: 500px;
-  }
-
-  #login {
-    margin: 0px;
-    margin-top: 15vh;
-    margin-bottom: 100px;
-    justify-content: center;
-  }
-
-  i {
-    margin-top: 200px;
-  }
-
-  #username,
-  #password {
-    width: 80%;
-    margin: auto;
-  }
-
-  button {
-    width: 60%;
-  }
-
-  h1 {
-    margin-top: 30px !important;
-  }
-}
-
-.container-fluid {
-  marign: 0px;
-  padding: 0px;
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  /* width: 45%; */
+  background-image:url(../assets/Images/Loginpage/bruno-kelzer-LvySG1hvuzI-unsplash.jpg);
+ 
+  background-size: cover;
 }
 
-.row {
-  marign: 0px;
-  padding: 0px;
-  justify-content: center;
+.card {
+  overflow: hidden;
+  border-radius: 10px;
+  min-height: 500px;
 }
 
-#left {
-  background-color: #e55934;
+.img-left {
+  width: 45%;
+  background-image:url(../assets/Images/Loginpage/md-salman-tWOz2_EK5EQ-unsplash.jpg);
+   
+  background-size: cover;
 }
 
-#right {
-  background-color: #fff;
+.card-body {
+  padding: 2rem;
+  background-image:url(../assets/Images/Loginpage/bruno-kelzer-LvySG1hvuzI-unsplash.jpg);
 }
 
-i {
-  margin: 0xp;
-  padding: 0px;
-  font-size: 1.75em;
-  color: #fff;
-}
-
-h1 {
-  margin: 0xp;
-  padding: 0px;
-  margin-bottom: 20px;
-  color: #3a3331;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 500;
-  font-size: 2.25em;
-}
-
-h2 {
-  margin: 0xp;
-  padding: 0px;
-  margin-top: 0px !important;
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  font-size: 2.25em;
-}
-
-h4 {
-  margin-top: 0px !important;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.9em;
-  color: #35150c;
-  font-weight: 300;
-}
-
-#username span,
-#password span,
-button {
-  display: block;
-}
-
-#username input,
-#password input {
-  width: 100%;
-}
-
-button {
-  margin: auto;
-}
-
-#username span,
-#password span {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 500;
-  padding: 5px;
-  margin-top: 20px;
-}
-
-#username input,
-#password input {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 500;
-  padding: 12px;
-  border-radius: 0px;
+input[type='email'],
+input[type='password'] {
+  border-radius: 100px;
   border: none;
-  border-bottom: 3px solid #d8d8d8;
-  font-size: 1.25em;
+  background: #ffffff;
 }
-
-#username input:focus,
-#password input:focus {
-  outline: none;
-  color: #e55934;
-  border-bottom: 3px solid #e55934;
-}
-
-button {
-  padding: 10px;
-  margin-top: 50px;
-  background-color: #fff;
-  border: none;
-  border: 2px solid #e55934;
-  font-family: 'Open Sans', sans-serif;
-  border-radius: 5px;
-  color: #c14c2c;
-}
-
-button:hover {
-  color: #fff;
-  background-color: #e55934;
-  border: 2px solid #c14c2c;
-  border-radius: 5px;
-}
-
-button:focus {
-  outline: none;
-}
-
-#acct {
-  margin-top: 30px;
-  color: #c14c2c;
-}
-
-#signup-button {
-  color: #fff;
-  background-color: #e55934;
-  border: 2px solid #c14c2c;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-#signup-button:hover {
-  color: #e55934;
-  background-color: #fff;
-  border: 2px solid #e55934;
-  border-radius: 5px;
+input[type='button'] {
+  border-radius: 100px;
 }
 </style>

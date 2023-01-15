@@ -10,15 +10,10 @@
           <div class="card m-2">
             <div class="img-wrapper">
               <img
-                class="card-img img-fluid w-100 h-100"
+                class="card-img img-fluid w-100 h-100 zoom"
                 :src="product.thumbnail"
                 alt="Vans"
               />
-            </div>
-            <div class="card-img-overlay d-flex justify-content-end">
-              <a href="#" class="card-link text-danger like">
-                <i class="fas fa-heart"></i>
-              </a>
             </div>
             <div class="card-body">
               <h4 class="card-title">{{ product.title }}</h4>
@@ -31,10 +26,14 @@
                   <h5 class="mt-4">Starting From ${{ product.price }}</h5>
                 </div>
                 <!-- on focus storing id of specific id of product and sending it as a params in the function -->
-                <button @click="fetchProductId" @focus="productId = product.id">
-                  View Details
-                </button>
               </div>
+              <button
+                class="btn btn-danger mt-3"
+                @click="fetchProductId"
+                @focus="productId = product.id"
+              >
+                View Details
+              </button>
             </div>
           </div>
         </div>
@@ -43,7 +42,7 @@
   </section>
   <pagination-card
     :totalPages="12"
-    :perPage="10"
+    :perPage="12"
     :currentPage="currentPage"
     @pagechanged="onPageChange"
   />
@@ -60,7 +59,7 @@ export default {
     latestProducts: [],
     productId: null,
     currentPage: 1,
-    limit: 10,
+    limit: 12,
     skip: 0,
   }),
 
@@ -78,7 +77,7 @@ export default {
         });
     },
     fetchProductId() {
-      console.log( 'this is the id')
+      console.log('this is the id');
       //  this will push to the Detail Page with id of specific product
       this.$router.push({
         name: 'ProductDetails',
@@ -112,5 +111,24 @@ export default {
 }
 .img-wrapper {
   height: 20rem;
+}
+.zoom {
+  padding: 50px;
+
+  transition: transform 0.5s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5);
+}
+.polaroid {
+  /* width: 250px; */
+  box-shadow: 8px 0 0 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
 }
 </style>

@@ -1,62 +1,83 @@
 <template>
-  <div>
-    <form class="form-page">
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Product Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Product Name"
-          v-model="newProduct.title"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput2">Product Stock</label>
-        <input
-          type="number"
-          class="form-control"
-          id="exampleFormControlInput2"
-          placeholder="Product Quantity"
-          v-model="newProduct.stock"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput3">Product Price</label>
-        <input
-          type="number"
-          class="form-control"
-          id="exampleFormControlInput3"
-          placeholder="Product Price"
-          v-model="newProduct.price"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Product Description</label>
-        <textarea
-          class="form-control"
-          id="exampleFormControlTextarea1"
-          rows="3"
-          v-model="newProduct.description"
-        ></textarea>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlFile1">Image</label>
-        <input
-          type="url"
-          class="form-control"
-          id="exampleFormControlFile1"
-          v-model="newProduct.thumbnail"
-        />
-      </div>
-      <router-link to="/home">
-        <button type="submit" class="btn btn-dark" @click="addNewProduct">
-          Add Product
-        </button>
-      </router-link>
-    </form>
-  </div>
+  <div class="wrapper"> <form class="needs-validation border-2" novalidate>
+    <div class="col-md-8 mb-3">
+      <label for="validationTooltip01">Product Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationTooltip01"
+        placeholder="Product Name"
+        required
+        v-model="newProduct.title"
+      />
+      <div class="valid-tooltip">Looks good!</div>
+    </div>
+    <div class="col-md-8 mb-3">
+      <label for="validationTooltip02">Quantity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="validationTooltip02"
+        placeholder="Product Stock"
+        required
+        v-model="newProduct.stock"
+      />
+      <div class="valid-tooltip">Looks good!</div>
+    </div>
+    <div class="col-md-8 mb-3">
+      <label for="validationTooltip01">Product Brand</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationTooltip01"
+        placeholder="Product Brand"
+        required
+        v-model="newProduct.Brand"
+      />
+      <div class="valid-tooltip">Looks good!</div>
+    </div>
+    <div class="col-md-8 mb-3">
+      <label for="validationTooltip01">Product Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="validationTooltip01"
+        placeholder="Product Price"
+        required
+        min="5"
+        v-model="newProduct.price"
+      />
+      <div class="valid-tooltip">Looks good!</div>
+    </div>
+    <div class="col-md-8 mb-3">
+      <label for="validationTooltip01">Product Description</label>
+      <textarea
+        type="text"
+        class="form-control"
+        rows="3"
+        id="validationTooltip01"
+        placeholder="Product Description"
+        required
+        v-model="newProduct.description"
+      ></textarea>
+      <div class="valid-tooltip">Looks good!</div>
+    </div>
+    <div class="form-group col-md-8 mb-3">
+      <label for="validationTooltip01">Image</label>
+      <input
+        type="url"
+        class="form-control"
+        id="validationTooltip01"
+        v-model="newProduct.thumbnail"
+      />
+    </div>
+    <router-link to="/home">
+      <button @click="addNewProduct" class="btn btn-primary" type="submit">
+        Add Product
+      </button>
+    </router-link>
+  </form></div>
+ 
 </template>
 
 <script>
@@ -69,9 +90,10 @@ export default {
         title: null,
         stock: null,
         price: null,
+        brand:null,
         description: null,
         thumbnail: null,
-        latestProduct: {},
+        newAddedProduct: {},
       },
     };
   },
@@ -82,21 +104,23 @@ export default {
         title: this.newProduct.title,
         price: this.newProduct.price,
         thumbnail: this.newProduct.thumbnail,
+        brand:this.newProduct.brand,
         stock: this.newProduct.stock,
       });
-      this.latestProduct = alpha.data;
-      alert(this.latestProduct);
-      console.log(this.latestProduct);
+      console.log(alpha)
+      this.newAddedProduct = alpha.data;
+      alert(newAddedProduct.data);
+      console.log(this.newAddedProduct);
     },
   },
 };
 </script>
 
 
-<style scoped>
-.form-page {
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-  margin: 1rem;
+<style>
+.wrapper {
+  margin-top: 4.5rem;
+
+  justify-content: center;
 }
 </style>
