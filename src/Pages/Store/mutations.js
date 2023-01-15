@@ -1,11 +1,11 @@
 export default {
   addToCart(state, { id, stock, title, thumbnail, price, quantity }) {
-    console.log(id);
+    //to check if the product is already added
     let productInCart = state.cart.find((item) => {
       return item.id === id;
     });
     if (productInCart) {
-      productInCart.quantity +=1;
+      productInCart.quantity += 1;
     } else {
       state.cart.push({
         stock,
@@ -22,29 +22,19 @@ export default {
   removeProcut(state, id) {
     state.cart = state.cart.filter((cartProducts) => cartProducts.id != id);
   },
-  checkAuth(state, userToken) {},
 
-  // removing token from Store and updating Auth Status
-  // removeToken(state) {
-  //   state.token = '';
-  //   state.isAuthenticated = false;
-  // },
   userDetail(state, user) {
-    console.log(user, 'i am user');
     state.userDetails = user;
-    const token = localStorage.getItem('token');
-    console.log(token);
 
+    //getting user token from the local storage
+
+    const token = localStorage.getItem('token');
     if ((state.userDetails.token = token)) {
-      console.log('i am true');
+      // checking if the current user token equalls to the stored token
       state.token = token;
       state.isAuthenticated = true;
     } else {
-      console.log('i am false');
-      // state.token = '';
       state.isAuthenticated = false;
     }
-
-    // console.log(state.userDetails , 'passing user to state')
   },
 };

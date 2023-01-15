@@ -10,7 +10,7 @@
             <div class="form-group py-3">
               <input type="text" placeholder="username" v-model="username" />
             </div>
-            <div class="form-group py-3 ">
+            <div class="form-group py-3">
               <input
                 type="password"
                 placeholder="Password"
@@ -52,20 +52,16 @@ export default {
       };
       console.log(credentials);
       await axios
+      //passing credentials to api as an object
         .post('https://dummyjson.com/auth/login', credentials)
         .then((response) => {
-     
-
-          console.log('hi i am here');
+          //storing the local token and user in local storage
           localStorage.setItem('token', JSON.stringify(response.data.token));
           localStorage.setItem('user', JSON.stringify(response.data));
-        
-          console.log('hi i am here');
 
           this.$store.dispatch('userDetails');
 
           this.$router.push({ name: 'home' });
-       
         })
 
         .catch((error) => {
@@ -84,8 +80,8 @@ export default {
   justify-content: center;
   align-items: center;
   /* width: 45%; */
-  background-image:url(../assets/Images/Loginpage/bruno-kelzer-LvySG1hvuzI-unsplash.jpg);
- 
+  background-image: url(../assets/Images/Loginpage/bruno-kelzer-LvySG1hvuzI-unsplash.jpg);
+
   background-size: cover;
 }
 
@@ -97,14 +93,14 @@ export default {
 
 .img-left {
   width: 45%;
-  background-image:url(../assets/Images/Loginpage/md-salman-tWOz2_EK5EQ-unsplash.jpg);
-   
+  background-image: url(../assets/Images/Loginpage/md-salman-tWOz2_EK5EQ-unsplash.jpg);
+
   background-size: cover;
 }
 
 .card-body {
   padding: 2rem;
-  background-image:url(../assets/Images/Loginpage/bruno-kelzer-LvySG1hvuzI-unsplash.jpg);
+  background-image: url(../assets/Images/Loginpage/bruno-kelzer-LvySG1hvuzI-unsplash.jpg);
 }
 
 input[type='email'],
