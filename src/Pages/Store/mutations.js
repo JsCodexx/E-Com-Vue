@@ -36,4 +36,7 @@ export default {
       state.isAuthenticated = false;
     }
   },
+  loading (state , payload ){
+    state.loading = payload
+  }
 };

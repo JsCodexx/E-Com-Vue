@@ -60,6 +60,9 @@ const router = createRouter({
   scrollBehavior() {
     return { x: 0, y: 0 };
   },
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+  },
 });
 
 export default router;

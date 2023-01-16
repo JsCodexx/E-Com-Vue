@@ -38,11 +38,11 @@
       >
         <div class="row">
           <div class="col-lg-2 order-lg-1 order-2">
-            <!-- <ul class="image_list image-wrapper">
-              <li><img class="zoom" :src="product.images[0]" alt="" /></li>
-              <li><img class="zoom" :src="product.images[1]" alt="" /></li>
-              <li><img class="zoom" :src="product.images[2]" alt="" /></li>
-            </ul> -->
+            <ul class="image_list image-wrapper">
+              <li v-for="(image) in product.images" :key="image">
+                <img class="zoom" :src="image" alt="" />
+              </li>
+            </ul>
           </div>
           <div class="col-lg-4 order-lg-2 order-1">
             <div class="image_selected">
@@ -223,6 +223,7 @@ export default {
       product: {},
       quantity: '1',
       productId: '',
+      otherImages: [],
     };
   },
   created() {
@@ -238,6 +239,9 @@ export default {
         .get(`https://dummyjson.com/products/${this.productId}`)
         .then((response) => {
           this.product = response.data;
+
+          this.otherImages = this.product.images;
+          console.log(this.otherImages, 'this is images');
         })
         .catch((error) => {
           console.log(error);

@@ -15,4 +15,5 @@ export default {
 
     context.commit('userDetail', user);
   },
+  
 };

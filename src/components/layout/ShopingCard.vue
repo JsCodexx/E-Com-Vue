@@ -69,9 +69,12 @@ export default {
   methods: {
     getLatestProducts() {
       //fetching api from the user service directory
-      getLatestProducts(this.limit , this.skip)
+      this.$store.commit('loading', true);
+
+      getLatestProducts(this.limit, this.skip)
         .then((response) => {
           this.latestProducts = response.data.products;
+          this.$store.commit('loading', false);
         })
         .catch((error) => {
           console.log(error);
@@ -117,7 +120,7 @@ export default {
   height: 20rem;
 }
 .zoom {
-  padding: 50px;
+  padding: 70px;
 
   transition: transform 0.5s;
   width: 200px;
