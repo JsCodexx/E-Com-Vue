@@ -1,5 +1,9 @@
 <template>
+    <div class="one">
+      <h1>Searched Results</h1>
+    </div>
   <section class="products-wrapper">
+    
     <div>
       <div class="row p-5">
         <div

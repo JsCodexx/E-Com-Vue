@@ -13,6 +13,7 @@
 
       <li class="pagination-item">
         <button
+        class=" text-dark"
           type="button"
           @click="onClickPreviousPage"
           :disabled="isInFirstPage"
@@ -153,16 +154,22 @@ export default {
 }
 .pagination-item {
   display: inline-block;
-  border: 1px solid rgb(4, 4, 4);
+  border: 1px solid rgb(169, 167, 167);
   padding: 5px 12px;
-  border-radius: 5px;
+  margin: 0.5rem;
+  border-radius: 50%;
 }
 .pagination-item:hover {
   background: rgb(5, 235, 170);
 }
 
 .active {
-  background-color: rgb(37, 9, 243, 43);
-  color: rgb(251, 250, 250);
+  /* background-color: rgb(37, 9, 243, 43); */
+  background-color: rgb(84, 154, 240);
+}
+button {
+  padding: 0;
+  border: none;
+  background: none;
 }
 </style>

@@ -58,9 +58,7 @@
                 >
               </div>
               <div>
-                <span class="product_price"
-                  >${{ discount }}</span
-                >
+                <span class="product_price">${{ discount }}</span>
                 <strike class="product_discount">
                   <strike>{{ '$' + product.price }}</strike>
                 </strike>
@@ -259,7 +257,10 @@ export default {
   },
   computed: {
     discount() {
-     return Math.round(this.product.price - (this.product.price - this.product.discountPercentage));
+      return Math.round(
+        this.product.price -
+          (this.product.price - this.product.discountPercentage)
+      );
     },
   },
 };

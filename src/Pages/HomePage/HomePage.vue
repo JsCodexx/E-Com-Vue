@@ -55,7 +55,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style >
 .card-shopping {
 margin: 0 auto;
   /* margin-left: 16rem; */

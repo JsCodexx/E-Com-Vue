@@ -4,8 +4,11 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/home' },
-    { name: 'home',
-    path: '/home', component: () => import('./Pages/HomePage/HomePage.vue') },
+    {
+      name: 'home',
+      path: '/home',
+      component: () => import('./Pages/HomePage/HomePage.vue'),
+    },
 
     {
       path: '/catagories',
@@ -17,7 +20,7 @@ const router = createRouter({
       component: () => import('./Pages/Catagories/ProductCatagories.vue'),
     },
     {
-      name:'addproducts',
+      name: 'addproducts',
       path: '/addproducts',
       component: () => import('./Pages/AddProduct.vue'),
     },
@@ -38,9 +41,9 @@ const router = createRouter({
       component: () => import('./Pages/SearchProduct.vue'),
     },
     {
-      name:'AllProducts',
-      path:'/AllProducts',
-      component:()=> import('./components/UI/MainProducts.vue'),
+      name: 'AllProducts',
+      path: '/AllProducts',
+      component: () => import('./components/UI/MainProducts.vue'),
     },
     {
       name: 'login',
@@ -54,6 +57,9 @@ const router = createRouter({
     },
     { path: '/:notFound(.*)', component: () => import('./Pages/NotFound.vue') },
   ],
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
 });
 
 export default router;

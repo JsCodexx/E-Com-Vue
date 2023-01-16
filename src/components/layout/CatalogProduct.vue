@@ -15,11 +15,6 @@
                 alt="Vans"
               />
             </div>
-            <!-- <div class="card-img-overlay d-flex justify-content-end">
-              <a href="#" class="card-link text-danger like">
-                <i class="fas fa-heart"></i>
-              </a>
-            </div> -->
             <div class="card-body">
               <h4 class="card-title">{{ product.title }}</h4>
               <h6 class="card-subtitle mb-2 text-muted">{{ product.brand }}</h6>

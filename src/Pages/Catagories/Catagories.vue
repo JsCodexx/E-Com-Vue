@@ -1,6 +1,9 @@
 <template>
   <keep-alive>
     <div class="card-shopping">
+      <div class="one">
+      <h1>Categories</h1>
+    </div>
       <catalog-card></catalog-card>
     </div>
   </keep-alive>
