@@ -1,5 +1,5 @@
 <template>
-    <section class="products-wrapper">
+  <section class="products-wrapper">
     <div>
       <div class="row p-5">
         <div
@@ -45,6 +45,8 @@
 
 <script>
 import axios from 'axios';
+import { getSearchProducts } from '../AllServices/APIServices';
+
 export default {
   name: 'SearchProducts',
 
@@ -53,16 +55,24 @@ export default {
     searchedProducts: [],
     productId: null,
   }),
+  // created() {
+  //   console.log(this.searchedValue)
+  //   this.searchedValue();
+  // },
   mounted() {
-    this.getsearchProducts();
+    this.getSearchProducts();
+  },
+  computed: {
+    searchedValue() {
+      //returning the searched value
+      return (this.searchText = this.$route.params.id);
+    },
   },
   methods: {
-    getsearchProducts() {
-      const alpha = axios
-        .get(
-          `https://dummyjson.com/products/search?q=${(this.searchText =
-            this.$route.params.id)}`
-        )
+    getSearchProducts() {
+      //call from api services
+      getSearchProducts(this.searchedValue)
+    
         .then((response) => {
           this.searchedProducts = response.data.products;
           console.log(this.searchedProducts);
@@ -108,5 +118,4 @@ export default {
   -webkit-transform: scale(1.5); /* Safari 3-8 */
   transform: scale(1.5);
 }
-
 </style>

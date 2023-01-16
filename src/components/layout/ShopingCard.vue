@@ -53,6 +53,7 @@
 <script scoped>
 import axios from 'axios';
 import PaginationCard from './PaginationCard.vue';
+import { getLatestProducts } from '../../AllServices/APIServices';
 
 export default {
   components: { PaginationCard },
@@ -67,10 +68,8 @@ export default {
 
   methods: {
     getLatestProducts() {
-      const alpha = axios
-        .get(
-          `https://dummyjson.com/products?limit=${this.limit}&skip=${this.skip}`
-        )
+      //fetching api from the user service directory
+      getLatestProducts(this.limit , this.skip)
         .then((response) => {
           this.latestProducts = response.data.products;
         })

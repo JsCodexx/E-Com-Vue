@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row p-5">
+    <div class="row p-5 mt-5">
       <div
         v-for="category in ProductCatagories"
         :key="category.id"
@@ -40,6 +40,10 @@
 </template>
 <script>
 import axios from 'axios';
+import { getProductsByCatagories } from '../../AllServices/APIServices';
+import { getProductsCatagories } from '../../AllServices/APIServices';
+import { getProducts } from '../../AllServices/APIServices';
+
 
 export default {
   data: () => ({
@@ -54,8 +58,8 @@ export default {
   },
   methods: {
     getProductsCatagories() {
-      axios
-        .get('https://dummyjson.com/products/categories')
+      axios;
+      getProductsCatagories()
         .then((response) => {
           this.ProductCatagories = response.data;
           this.getProductsByCatagories(this.ProductCatagories);
@@ -68,8 +72,8 @@ export default {
     getProductsByCatagories(products) {
       //this method will get the products of the same category
       for (let i = 0; i <= products.length - 2; i++) {
-        const ProductsByCatagories = axios
-          .get(`https://dummyjson.com/products/category/${products[i]}`)
+        const ProductsByCatagories = axios;
+        getProductsByCatagories(products)
           .then((response) => {
             //storing the result in an array
             this.ProductbyCatagories.push(response.data);
@@ -80,19 +84,19 @@ export default {
       }
     },
     fetchProductId() {
-  //on click this function will go to singleProduct page with the specific id of the clicked product
+      //on click this function will go to singleProduct page with the specific id of the clicked product
       this.$router.push({
         name: 'SingleProduct',
         params: { productCata: this.singleProducts },
       });
     },
+      // to get a sample image for the category
 
     getProducts() {
-      // to get a sample image for the category
-      const getProducts = axios
-        .get('https://dummyjson.com/products')
+      //api call from service page
+        getProducts()
         .then((response) => {
-          console.log(response.data.products[1].thumbnail)
+          console.log(response.data.products[1].thumbnail);
           this.prodcutImage = response.data.products[1].thumbnail;
         })
         .catch((error) => {

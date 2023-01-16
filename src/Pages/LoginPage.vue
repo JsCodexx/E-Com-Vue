@@ -34,6 +34,7 @@
 
 <script>
 import axios from 'axios';
+import { logIn } from '../AllServices/APIServices';
 export default {
   data() {
     name: 'login';
@@ -51,19 +52,15 @@ export default {
         password: this.password,
       };
       console.log(credentials);
-      await axios
-      //passing credentials to api as an object
-        .post('https://dummyjson.com/auth/login', credentials)
+        //passing credentials to api as an object
+        logIn(credentials)
         .then((response) => {
           //storing the local token and user in local storage
           localStorage.setItem('token', JSON.stringify(response.data.token));
           localStorage.setItem('user', JSON.stringify(response.data));
-
           this.$store.dispatch('userDetails');
-
           this.$router.push({ name: 'home' });
         })
-
         .catch((error) => {
           console.log(JSON.stringify(error));
         });
