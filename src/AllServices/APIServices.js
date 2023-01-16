@@ -5,7 +5,9 @@ export async function getLatestProducts(limit, skip) {
   return await axios.get(`${baseUrl}products?limit=${limit}&skip=${skip}`);
 }
 
-
+export async  function fetchLatestProducts(name){
+  return await axios.get(`${baseUrl}products/categories/${name}`)
+}
 export async function getProductsCatagories() {
   return await axios.get(`${baseUrl}products/categories`);
 }

@@ -1,41 +1,67 @@
 <template>
-  <div
-  style="overflow-x: hidden;"
-    id="carouselExampleSlidesOnly h-50"
-    class="carousel slide"
-    data-ride="carousel"
-  >
-    <div class="carousel-inner h-25">
-      <div class="carousel-item active h-75">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li
+        data-target="#carouselExampleCaptions"
+        data-slide-to="0"
+        class="active"
+      ></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
         <img
-          
-          class="d-block heroimage img-fluid"
-          src="../../assets/Images/HomePage/slide1.jpg"
-          alt="First slide"
+          src="../../assets/Images/HomePage/slide1.png"
+          class="d-block w-100"
+          alt="..."
         />
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="text-primar">BUY FOR YOURSELF</h5>
+          <p>Every Thing Is Just A Click Away</p>
+        </div>
       </div>
-      <div class="carousel-item h-75">
+      <div class="carousel-item">
         <img
-          class="d-block heroimage img-fluid"
-          src="../../assets/Images/HomePage/slide2.jpg"
-          alt="Second slide"
+          src="../../assets/Images/HomePage/slide2.png"
+          class="d-block w-100"
+          alt="..."
         />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>WE CARE ABOUT YOU</h5>
+          <p>The Feel You Deserve</p>
+        </div>
       </div>
-      <div class="carousel-item h-75">
+      <div class="carousel-item">
         <img
-          class="d-block heroimage img-fluid"
-          src="../../assets/Images/HomePage/slide3.jpg"
-          alt="Third slide"
+          src="../../assets/Images/HomePage/slide2.png"
+          class="d-block w-100"
+          alt="..."
         />
-      </div>
-      <div class="carousel-item h-75">
-        <img
-          class="d-block heroimage img-fluid"
-          src="../../assets/Images/HomePage/slide4.jpg"
-          alt="Third slide"
-        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>SALE IS ON</h5>
+          <p>Let's Have A Look</p>
+        </div>
       </div>
     </div>
+    <a
+      class="carousel-control-prev"
+      href="#carouselExampleCaptions"
+      role="button"
+      data-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a
+      class="carousel-control-next"
+      href="#carouselExampleCaptions"
+      role="button"
+      data-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
   <div>
     <div class="one">
@@ -47,17 +73,17 @@
 <script>
 import ShopingCard from '../../components/layout/ShopingCard.vue';
 export default {
-  name:'home',
-  components:{
+  name: 'home',
+  components: {
     ShopingCard,
-  }
-}
+  },
+};
 </script>
 
 
 <style >
 .card-shopping {
-margin: 0 auto;
+  margin: 0 auto;
   /* margin-left: 16rem; */
   /* margin: 0; */
   /* box-sizing: border-box; */

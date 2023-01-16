@@ -61,7 +61,7 @@ export default {
           localStorage.setItem('token', JSON.stringify(response.data.token));
           localStorage.setItem('user', JSON.stringify(response.data));
           this.$store.dispatch('userDetails');
-          this.$router.push({ name: 'home' });
+          this.$router.push({ name: 'ShoppingCart' });
           this.$store.commit('loading', false);
         })
         .catch((error) => {

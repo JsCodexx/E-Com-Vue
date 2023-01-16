@@ -41,7 +41,7 @@
       </div>
     </div>
   </section>
-
+<!-- defining the card and defining all the necessay data for the pages  -->
   <pagination-card
     class="wrapper"
     :totalPages="12"
@@ -92,9 +92,11 @@ export default {
         params: { id: this.productId },
       });
     },
+    //function will run on the change of the page
     onPageChange(page) {
       this.currentPage = page;
       if (page) {
+        //this will calculate the skip number for the page
         this.skip = this.limit * (page - 1);
       }
       this.getLatestProducts();

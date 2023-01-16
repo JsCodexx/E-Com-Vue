@@ -8,9 +8,9 @@
               <div class="row">
                 <div class="col-lg-7">
                   <h5 class="mb-3">
-                    <a href="#!" class="text-body"
+                    <router-link to="home" href="#!" class="text-body"
                       ><i class="fas fa-long-arrow-alt-left me-2"></i>Continue
-                      shopping</a
+                      shopping</router-link
                     >
                   </h5>
                   <hr />
@@ -39,7 +39,7 @@
                     <div class="me-auto p-2">
                       <div class="ms-3">
                         <p>{{ item.title }}</p>
-                        <p class="small mb-0">256GB, Navy Blue</p>
+                        <!-- <p class="small mb-0">256GB, Navy Blue</p> -->
                       </div>
                     </div>
                     <div class="p-2">
@@ -166,7 +166,7 @@
 
                       <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total(Incl. taxes)</p>
-                        <p class="mb-2">${{subTotal}}.00</p>
+                        <p class="mb-2">${{ subTotal }}.00</p>
                       </div>
 
                       <button
@@ -174,7 +174,7 @@
                         class="btn btn-info btn-block btn-lg"
                       >
                         <div class="d-flex justify-content-between">
-                          <span>${{subTotal}}.00</span>
+                          <span>${{ subTotal }}.00</span>
                           <span
                             >Checkout
                             <i class="fas fa-long-arrow-alt-right ms-2"></i
@@ -200,6 +200,7 @@ export default {
   data() {
     return {
       cartData: '',
+      cartlen: '',
     };
   },
   mounted() {
@@ -219,6 +220,10 @@ export default {
     },
   },
   computed: {
+    cartLength() {
+      console.log(this.$store.state.cart.length, 'sfdsdf');
+      // return this.$store.state.cart.length;
+    },
     cart() {
       return this.$store.state.cart;
     },
@@ -237,6 +242,5 @@ export default {
     height: 100vh !important;
   }
 }
-
 </style>
 
