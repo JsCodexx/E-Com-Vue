@@ -39,7 +39,7 @@
         <div class="row">
           <div class="col-lg-2 order-lg-1 order-2">
             <ul class="image_list image-wrapper">
-              <li v-for="(image) in product.images" :key="image">
+              <li v-for="image in product.images" :key="image">
                 <img class="zoom" :src="image" alt="" />
               </li>
             </ul>
@@ -235,13 +235,14 @@ export default {
   },
   methods: {
     getProduct() {
+      this.$store.commit('loading', true);
+
       axios
         .get(`https://dummyjson.com/products/${this.productId}`)
         .then((response) => {
           this.product = response.data;
 
-          this.otherImages = this.product.images;
-          console.log(this.otherImages, 'this is images');
+          this.$store.commit('loading', false);
         })
         .catch((error) => {
           console.log(error);

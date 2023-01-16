@@ -67,11 +67,13 @@ export default {
   },
   methods: {
     getLatestProducts() {
+      this.$store.commit('loading', true);
+
       const alpha = axios
         .get(`https://dummyjson.com/products/category/${this.productCategory}`)
         .then((response) => {
           this.latestProducts = response.data.products;
-          console.log(response.data.products);
+          this.$store.commit('loading', false);
         })
         .catch((error) => {
           console.log(error);
@@ -83,5 +85,4 @@ export default {
 
 
 <style scoped>
-
 </style>

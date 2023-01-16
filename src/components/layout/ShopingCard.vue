@@ -8,13 +8,14 @@
           :key="product.id"
         >
           <div class="card m-2">
-            <div class="img-wrapper">
+            <div class=" img-wrapper">
               <img
                 class="card-img img-fluid w-100 h-100 zoom"
                 :src="product.thumbnail"
                 alt="Vans"
               />
             </div>
+            <hr class="border-2">
             <div class="card-body">
               <h4 class="card-title">{{ product.title }}</h4>
               <h6 class="card-subtitle mb-2 text-muted">{{ product.brand }}</h6>
@@ -67,8 +68,11 @@ export default {
   }),
 
   methods: {
-    getLatestProducts() {
       //fetching api from the user service directory
+
+    getLatestProducts() {
+
+      //this is to load the loader
       this.$store.commit('loading', true);
 
       getLatestProducts(this.limit, this.skip)
@@ -120,7 +124,7 @@ export default {
   height: 20rem;
 }
 .zoom {
-  padding: 70px;
+  padding: 55px;
 
   transition: transform 0.5s;
   width: 200px;

@@ -46,20 +46,23 @@ export default {
   },
   methods: {
     async logIn() {
+      this.$store.commit('loading', true);
+
       localStorage.removeItem('token');
       const credentials = {
         username: this.username,
         password: this.password,
       };
       console.log(credentials);
-        //passing credentials to api as an object
-        logIn(credentials)
+      //passing credentials to api as an object
+      logIn(credentials)
         .then((response) => {
           //storing the local token and user in local storage
           localStorage.setItem('token', JSON.stringify(response.data.token));
           localStorage.setItem('user', JSON.stringify(response.data));
           this.$store.dispatch('userDetails');
           this.$router.push({ name: 'home' });
+          this.$store.commit('loading', false);
         })
         .catch((error) => {
           console.log(JSON.stringify(error));

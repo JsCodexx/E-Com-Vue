@@ -1,5 +1,8 @@
 <template>
-  <div v-bind:style="styles" class="spinner spinner--circle-4"></div>
+  <div
+    v-bind:style="styles"
+    class="spinner spinner--circle-4 d-flex text-center"
+  ></div>
 </template>
   <script>
 export default {
@@ -26,6 +29,8 @@ export default {
   border-top-color: #f7484e;
   border-radius: 50%;
   animation: circle-4-spin 2s linear infinite;
+  display: flex;
+  justify-content: center;
 }
 .spinner:before,
 .spinner:after {

@@ -142,10 +142,10 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .wrapper {
   margin-top: 3rem;
-  width: 100%;
+  /* width: 80%; */
   display: flex;
   justify-content: center;
 }

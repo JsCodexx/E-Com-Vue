@@ -44,7 +44,6 @@ import { getProductsByCatagories } from '../../AllServices/APIServices';
 import { getProductsCatagories } from '../../AllServices/APIServices';
 import { getProducts } from '../../AllServices/APIServices';
 
-
 export default {
   data: () => ({
     singleProducts: null,
@@ -58,18 +57,23 @@ export default {
   },
   methods: {
     getProductsCatagories() {
+      this.$store.commit('loading', true);
+
       axios;
       getProductsCatagories()
         .then((response) => {
           this.ProductCatagories = response.data;
           this.getProductsByCatagories(this.ProductCatagories);
           this.getProducts();
+          this.$store.commit('loading', false);
         })
         .catch((error) => {
           console.log(error);
         });
     },
     getProductsByCatagories(products) {
+      this.$store.commit('loading', true);
+
       //this method will get the products of the same category
       for (let i = 0; i <= products.length - 2; i++) {
         const ProductsByCatagories = axios;
@@ -77,6 +81,7 @@ export default {
           .then((response) => {
             //storing the result in an array
             this.ProductbyCatagories.push(response.data);
+            this.$store.commit('loading', false);
           })
           .catch((error) => {
             console.log(error);
@@ -90,11 +95,11 @@ export default {
         params: { productCata: this.singleProducts },
       });
     },
-      // to get a sample image for the category
+    // to get a sample image for the category
 
     getProducts() {
       //api call from service page
-        getProducts()
+      getProducts()
         .then((response) => {
           console.log(response.data.products[1].thumbnail);
           this.prodcutImage = response.data.products[1].thumbnail;
