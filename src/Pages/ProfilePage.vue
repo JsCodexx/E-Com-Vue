@@ -4,23 +4,30 @@
       <div class="row align-items-center flex-row-reverse">
         <div class="col-lg-6">
           <div class="about-text go-to">
-            <h3 class="dark-color">{{userDetails.Username}}</h3>
+            <h3 class="dark-color">{{ userDetails.Username }}</h3>
             <h6 class="theme-color lead">
               A Lead UX &amp; UI designer based in Canada
+              <button type="button" class="btn btn-info" @click="logout">
+                <div class="justify-content-between">
+                  <span
+                    >LogOut &nbsp<i class="fa fa-right-from-bracket"></i
+                  ></span>
+                </div>
+              </button>
             </h6>
             <div class="row about-list">
               <div class="col-md-6">
                 <div class="media">
                   <label>Gender</label>
-                  <p>{{userDetails.gender}}</p>
+                  <p>{{ userDetails.gender }}</p>
                 </div>
                 <div class="media">
                   <label>ID</label>
-                  <p>{{userDetails.id}}</p>
+                  <p>{{ userDetails.id }}</p>
                 </div>
                 <div class="media">
                   <label>FirstName</label>
-                  <p>{{userDetails.firstName}}</p>
+                  <p>{{ userDetails.firstName }}</p>
                 </div>
                 <div class="media">
                   <label>Address</label>
@@ -38,7 +45,7 @@
                 </div>
                 <div class="media">
                   <label>LastName</label>
-                  <p>{{userDetails.lastName}}</p>
+                  <p>{{ userDetails.lastName }}</p>
                 </div>
                 <div class="media">
                   <label>Freelance</label>
@@ -50,17 +57,13 @@
         </div>
         <div class="col-lg-6">
           <div class="about-avatar">
-            <img
-              :src="userDetails.image"
-              title=""
-              alt=""
-            />
+            <img :src="userDetails.image" title="" alt="" />
           </div>
         </div>
       </div>
-   
     </div>
   </section>
+  <div></div>
 </template>
 
 <script>
@@ -69,10 +72,18 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    logout() {
+      localStorage.clear();
+      this.$router.push({ name: 'login' });
+    },
+  },
   computed: {
     userDetails() {
-      console.log(JSON.parse(localStorage.getItem('user')) , 'this is on the profile page dtaa')
+      console.log(
+        JSON.parse(localStorage.getItem('user')),
+        'this is on the profile page dtaa'
+      );
       return JSON.parse(localStorage.getItem('user'));
     },
   },
