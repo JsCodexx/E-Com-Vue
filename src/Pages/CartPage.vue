@@ -54,7 +54,7 @@
                     </div>
                     <button
                       @click.prevent="removeItem(item.id)"
-                      class="fa-solid fa-ban"
+                      class="fa  fa-xmark"
                       title="Remove Product"
                     ></button>
                   </div>
@@ -221,7 +221,7 @@ export default {
   },
   computed: {
     cartLength() {
-      console.log(this.$store.state.cart.length, 'sfdsdf');
+      console.log(this.$store.state.cart, 'sfdsdf');
       // return this.$store.state.cart.length;
     },
     cart() {

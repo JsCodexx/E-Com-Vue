@@ -4,20 +4,20 @@
       <router-link to="/home" class="navbar-brand" href="#"
         >BUY4YOU</router-link
       >
-      <form class="d-flex mt-3" role="search">
+      <form class="d-flex mt-1" role="search">
         <input
           class="form-control me-2"
           type="search"
-          placeholder="Search"
+          placeholder="&#xF002; Search"
           aria-label="Search"
           v-model="searchText"
         />
         <button
           @click.prevent="searchValue"
-          class="btn btn-outline-success"
+          class=" btn text-light border-0 fa fa-search"
           type="submit"
         >
-          Search
+          
         </button>
       </form>
       <button
@@ -27,7 +27,7 @@
         data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="fa fa-bars"></span>
       </button>
       <div
         class="offcanvas offcanvas-end"
@@ -239,5 +239,9 @@ export default {
 .row {
   justify-content: center;
   width: 100vw;
+}
+.btn{
+  margin:0;
+  padding: 0;
 }
 </style>

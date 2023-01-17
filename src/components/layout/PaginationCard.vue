@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <ul class="pagination">
-      <li class="pagination-item">
+      <li class="pagination-item b1">
         <button
           type="button"
           @click="onClickFirstPage"
@@ -13,7 +13,7 @@
 
       <li class="pagination-item">
         <button
-        class=" text-dark"
+         
           type="button"
           @click="onClickPreviousPage"
           :disabled="isInFirstPage"
@@ -47,8 +47,13 @@
         </button>
       </li>
 
-      <li class="pagination-item">
-        <button type="button" @click="onClickLastPage" :disabled="isInLastPage">
+      <li class="pagination-item b1">
+        <button
+          type="button"
+          @click="onClickLastPage"
+          :disabled="isInLastPage"
+          class="b1"
+        >
           Last
         </button>
       </li>
@@ -171,5 +176,10 @@ button {
   padding: 0;
   border: none;
   background: none;
+}
+@media only screen and (max-width: 500px) {
+  .b1 {
+    display: none;
+  }
 }
 </style>
