@@ -60,7 +60,7 @@
                   </div>
                 </div>
                 <div class="col-lg-5">
-                  <div class="card bg-primary text-white rounded-3">
+                  <div class="card bg-dark text-white rounded-3">
                     <div class="card-body">
                       <div
                         class="
@@ -171,7 +171,7 @@
 
                       <button
                         type="button"
-                        class="btn btn-info btn-block btn-lg"
+                        class="btn btn-info btn-block btn-lg btn-dark"
                       >
                         <div class="d-flex justify-content-between">
                           <span>${{ subTotal }}.00</span>

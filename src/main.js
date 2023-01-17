@@ -1,15 +1,14 @@
 import { createApp } from 'vue';
-import BaseCard from './components/UI/MainProducts.vue';
-import ShoppingCard from './components/layout/ShopingCard.vue';
+import MainPage from './components/UI/MainProducts.vue';
+import MainCard from './components/layout/MainCard.vue';
 import CatalogCard from './components/layout/CatalogCard.vue';
 import CatalogProduct from './components/layout/CatalogProduct.vue';
 import MainProducts from './components/UI/MainProducts.vue';
 import App from './App.vue';
 import router from './router';
-// import vuetify from './vuetify';
 import axios from 'axios';
 import store from './Pages/Store';
-// axios.defaults.baseURL = 'http://127.0.0.1:5173';
+
 
 
 
@@ -21,8 +20,8 @@ app.use(router, axios);
 app.use(store)
 
 
-app.component('base-card', BaseCard);
-app.component('shopping-card', ShoppingCard);
+app.component('main-page', MainPage);
+app.component('main-card', MainCard);
 app.component('main-products', MainProducts);
 app.component('catalog-card', CatalogCard);
 app.component('catalog-product', CatalogProduct);

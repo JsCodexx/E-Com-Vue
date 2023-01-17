@@ -1,20 +1,20 @@
 <template>
-  <the-header></the-header>
-  <loader-card v-if="isOnLoading" class="wrapper"></loader-card>
+  <header-component></header-component>
+  <loader-component v-if="isOnLoading" class="wrapper"></loader-component>
   <router-view :key="$route.fullPath"> </router-view>
 
-  <footer-card></footer-card>
-  <loader-card v-if="isOnLoading"></loader-card>
+  <footer-component></footer-component>
+  <loader-component v-if="isOnLoading"></loader-component>
 </template>
 <script>
-import TheHeader from './components/layout/TheHeader.vue';
-import FooterCard from './components/layout/FooterCard.vue';
-import LoaderCard from './components/layout/LoaderCard.vue';
+import HeaderComponent from './components/layout/HeaderComponent.vue';
+import FooterComponent from './components/layout/FooterComponent.vue';
+import LoaderComponent from './components/layout/LoaderComponent.vue';
 export default {
   components: {
-    TheHeader,
-    FooterCard,
-    LoaderCard,
+    HeaderComponent,
+    FooterComponent,
+    LoaderComponent,
   },
   computed: {
     isOnLoading() {

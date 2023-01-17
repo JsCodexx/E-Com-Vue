@@ -48,10 +48,10 @@
 
 <script>
 import axios from 'axios';
-import FooterCard from './FooterCard.vue';
+import FooterComponent from './FooterComponent.vue';
 
 export default {
-  components: { FooterCard },
+  components: { FooterComponent },
   data: () => ({
     show: false,
     latestProducts: [],

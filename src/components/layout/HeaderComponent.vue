@@ -8,17 +8,15 @@
         <input
           class="form-control me-2"
           type="search"
-          placeholder="&#xF002; Search"
+          placeholder=""
           aria-label="Search"
           v-model="searchText"
         />
         <button
           @click.prevent="searchValue"
-          class=" btn text-light border-0 fa fa-search"
+          class="btn text-light border-0 fa fa-search"
           type="submit"
-        >
-          
-        </button>
+        ></button>
       </form>
       <button
         class="navbar-toggler"
@@ -74,15 +72,19 @@
                 to="/catagories"
                 class="nav-link text-light bg-dark"
                 href="#"
+                type="button"
                 >Categories</router-link
               >
             </li>
-            <li class=" nav-item">
-              <router-link to="/Cart" class="nav-link text-light bg-dark fa-solid fa-cart-shopping">
+            <li class="nav-item">
+              <router-link
+                to="/Cart"
+                class="nav-link text-light bg-dark fa-solid fa-cart-shopping"
+              >
                 CART</router-link
               >
             </li>
-          
+
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle text-light bg-dark fa fa-user"
@@ -111,7 +113,6 @@
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
-              
               </ul>
             </li>
           </ul>
@@ -119,7 +120,6 @@
       </div>
     </div>
   </nav>
- 
 </template>
 <script>
 export default {
@@ -240,8 +240,8 @@ export default {
   justify-content: center;
   width: 100vw;
 }
-.btn{
-  margin:0;
+.btn {
+  margin: 0;
   padding: 0;
 }
 </style>

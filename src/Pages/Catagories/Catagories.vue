@@ -1,19 +1,75 @@
 <template>
   <keep-alive>
-    <div class="card-shopping">
+    <div class="main-card">
       <div class="one">
-      <h1>Categories</h1>
-    </div>
+        <h1>Categories</h1>
+      </div>
       <catalog-card></catalog-card>
     </div>
   </keep-alive>
 </template>
 
 
-<style scoped>
-.card-shopping {
+<style scoped >
+.main-card {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+}
+.one {
+  padding-top: 5rem;
+}
+
+.one h1 {
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+
+.one h1:before {
+  width: 28px;
+  height: 5px;
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  margin-left: -14px;
+  background-color: #b80000;
+}
+
+.one h1:after {
+  width: 100px;
+  height: 1px;
+  display: block;
+  content: '';
+  position: relative;
+  margin-top: 25px;
+  left: 50%;
+  margin-left: -50px;
+  background-color: #b80000;
+}
+h1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  /* font-family: "Raleway, sans-serif; */
+  font-weight: 300;
+  font-size: 40px;
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+h1 span {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
+}
+
+h1 em {
+  font-style: normal;
+  font-weight: 600;
 }
 </style>

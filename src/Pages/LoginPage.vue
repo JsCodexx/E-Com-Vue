@@ -1,16 +1,19 @@
 <template>
-  <div class="wrapper">
+  <div class="card-wrapper">
     <div class="container">
       <div class="col-md-9 card mx-auto d-flex flex-row px-0">
         <div class="img-left d-md-flex d-none"></div>
 
         <div class="card-body d-flex flex-column justify-content-center">
           <h4 class="title text-center mt-4 pb-3">Login into accont</h4>
+          <p class="title text-center mt-4 pb-3">
+            username: kminchelle , password: 0lelplR
+          </p>
           <form class="col-sm-10 col-12 mx-auto">
             <div class="form-group py-3">
               <input type="text" placeholder="username" v-model="username" />
             </div>
-            <div class="form-group py-3">
+            <div class="form-group py-3 pass-placeholder">
               <input
                 type="password"
                 placeholder="Password"
@@ -73,7 +76,7 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.card-wrapper {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -104,11 +107,9 @@ export default {
   background-image: url(../assets/Images/Loginpage/bruno-kelzer-LvySG1hvuzI-unsplash.jpg);
 }
 
-input[type='email'],
 input[type='password'] {
-  border-radius: 100px;
-  border: none;
-  background: #ffffff;
+  /* border: none; */
+  background-color: white;
 }
 input[type='button'] {
   border-radius: 100px;

@@ -67,15 +67,15 @@
     <div class="one">
       <h1>Featured Products</h1>
     </div>
-    <shoping-card></shoping-card>
+    <main-card></main-card>
   </div>
 </template>
 <script>
-import ShopingCard from '../../components/layout/ShopingCard.vue';
+import MainCard from '../../components/layout/MainCard.vue';
 export default {
   name: 'home',
   components: {
-    ShopingCard,
+    MainCard,
   },
 };
 </script>

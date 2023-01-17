@@ -42,7 +42,7 @@
     </div>
   </section>
 <!-- defining the card and defining all the necessay data for the pages  -->
-  <pagination-card
+  <pagination-component
     class="wrapper"
     :totalPages="12"
     :perPage="12"
@@ -53,11 +53,11 @@
 
 <script scoped>
 import axios from 'axios';
-import PaginationCard from './PaginationCard.vue';
+import PaginationComponent from './PaginationComponent.vue';
 import { getLatestProducts } from '../../AllServices/APIServices';
 
 export default {
-  components: { PaginationCard },
+  components: { PaginationComponent },
   data: () => ({
     show: false,
     latestProducts: [],
