@@ -3,7 +3,7 @@
     <div>
       <div class="row p-5">
         <div
-          class="col-12 col-sm-8 col-md-6 col-lg-3"
+          class="col-12 col-sm-6 col-md-6 col-lg-3"
           v-for="product in latestProducts"
           :key="product.id"
         >

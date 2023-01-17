@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
       <router-link to="/home" class="navbar-brand" href="#"
         >BUY4YOU</router-link

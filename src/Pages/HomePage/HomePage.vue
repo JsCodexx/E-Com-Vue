@@ -1,5 +1,5 @@
 <template>
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <div id="carouselExampleCaptions" class="carousel slide carou" data-ride="carousel">
     <ol class="carousel-indicators">
       <li
         data-target="#carouselExampleCaptions"
@@ -152,4 +152,19 @@ h1 em {
   font-style: normal;
   font-weight: 600;
 }
+/* @media only screen and (max-width: 600px) {
+  .carou {
+   margin-top: 2rem;
+  }
+}
+@media only screen and (max-width: 340px) {
+  .carou {
+   margin-top: 6rem;
+  }
+}
+@media only screen and (max-width: 281px) {
+  .carou {
+   margin-top: 8rem;
+  }
+} */
 </style>
