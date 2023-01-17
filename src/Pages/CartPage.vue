@@ -4,7 +4,7 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col">
           <div class="card">
-            <div class="card-body p-4">
+            <div class="card-body ">
               <div class="row">
                 <div class="col-lg-7">
                   <h5 class="mb-3">
@@ -54,7 +54,7 @@
                     </div>
                     <button
                       @click.prevent="removeItem(item.id)"
-                      class="fa fa-xmark"
+                      class="fa fa-xmark "
                       title="Remove Product"
                     ></button>
                   </div>
@@ -249,6 +249,14 @@ export default {
 @media (min-width: 1025px) {
   .h-custom {
     height: 100vh !important;
+  }
+  .remove-icon{
+    overflow: hidden;
+  }
+  .card-body{
+    padding-top: 0;
+    padding-bottom:0;
+    margin-bottom: 0;
   }
 }
 </style>

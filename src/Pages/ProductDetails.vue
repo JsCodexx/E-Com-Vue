@@ -258,6 +258,12 @@ export default {
         thumbnail: this.product.thumbnail,
         quantity: this.quantity,
       });
+      this.$swal.fire({
+        title: 'SuccessFull',
+        text: 'item added to cart login if  not to view cart',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
     },
   },
   computed: {
