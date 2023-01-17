@@ -65,35 +65,35 @@ Instructions on how to use them in your own application are linked below.
 
 #### APP PREVIEW
 
-##Home Page
+**Home Page**
 ![Home Page](./src/assets/Images/Documentation/HomePage.png?raw=true)
 
 
-##Product Page
+**Product Page**
 ![Product Page](./src/assets/Images/Documentation/ProductPage.png?raw=true)
 
 
-##Category Page
+**Category Page**
 ![Category Page](./src/assets/Images/Documentation/CategoryPage.png?raw=true)
 
 
-##Detail Page
+**Detail Page**
 ![Detail Page](./src/assets/Images/Documentation/DetailPage.png?raw=true)
 
 
-##Cart Page
+##Cart Page**
 ![Cart Page](./src/assets/Images/Documentation/CartPage.png?raw=true)
 
 
-##DashBoard
+**DashBoard**
 ![DashBoard](./src/assets/Images/Documentation/DashBoard.png?raw=true)
 
 
-##Add New Product Page
+**Add New Product Page**
 ![Add Product](./src/assets/Images/Documentation/AddNewProduct.png?raw=true)
 
 
-##Login Page
+**Login Page**
 ![login Page](./src/assets/Images/Documentation/LoginPage.png?raw=true)
 
 
