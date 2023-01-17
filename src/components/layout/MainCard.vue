@@ -8,14 +8,14 @@
           :key="product.id"
         >
           <div class="card m-2">
-            <div class=" img-wrapper">
+            <div class="img-wrapper">
               <img
                 class="card-img img-fluid w-100 h-100 zoom"
                 :src="product.thumbnail"
                 alt="Vans"
               />
             </div>
-            <hr class="border-2">
+            <hr class="border-2" />
             <div class="card-body">
               <h4 class="card-title">{{ product.title }}</h4>
               <h6 class="card-subtitle mb-2 text-muted">{{ product.brand }}</h6>
@@ -41,7 +41,7 @@
       </div>
     </div>
   </section>
-<!-- defining the card and defining all the necessay data for the pages  -->
+  <!-- defining the card and defining all the necessay data for the pages  -->
   <pagination-component
     class="wrapper"
     :totalPages="12"
@@ -68,10 +68,9 @@ export default {
   }),
 
   methods: {
-      //fetching api from the user service directory
+    //fetching api from the user service directory
 
     getLatestProducts() {
-
       //this is to load the loader
       this.$store.commit('loading', true);
 
@@ -124,6 +123,7 @@ export default {
 }
 .img-wrapper {
   height: 20rem;
+  overflow: hidden;
 }
 .zoom {
   padding: 55px;
