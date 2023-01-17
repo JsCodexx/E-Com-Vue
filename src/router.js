@@ -40,11 +40,7 @@ const router = createRouter({
       path: '/search/:id',
       component: () => import('./Pages/SearchProduct.vue'),
     },
-    {
-      name: 'AllProducts',
-      path: '/AllProducts',
-      component: () => import('./components/UI/MainProducts.vue'),
-    },
+ 
     {
       name: 'login',
       path: '/login',

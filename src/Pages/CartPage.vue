@@ -54,7 +54,7 @@
                     </div>
                     <button
                       @click.prevent="removeItem(item.id)"
-                      class="fa  fa-xmark"
+                      class="fa fa-xmark"
                       title="Remove Product"
                     ></button>
                   </div>
@@ -170,6 +170,7 @@
                       </div>
 
                       <button
+                        @click="checkout"
                         type="button"
                         class="btn btn-info btn-block btn-lg btn-dark"
                       >
@@ -217,6 +218,14 @@ export default {
       if (!this.$store.state.token) {
         this.$router.push('/login');
       }
+    },
+    checkout() {
+      this.$swal.fire({
+        title: 'Sucess!',
+        text: 'Order Confirmed',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
     },
   },
   computed: {

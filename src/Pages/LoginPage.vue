@@ -68,7 +68,12 @@ export default {
           this.$store.commit('loading', false);
         })
         .catch((error) => {
-          console.log(JSON.stringify(error));
+          this.$swal.fire({
+            title: 'Error!',
+            text: 'Please Try Again',
+            icon: 'error',
+            confirmButtonText: 'Try Again',
+          });
         });
     },
   },

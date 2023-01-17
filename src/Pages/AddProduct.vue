@@ -92,11 +92,11 @@ export default {
   data() {
     return {
       newProduct: {
-        title: null,
-        stock: null,
-        price: null,
-        brand: null,
-        description: null,
+        title: 'Leather Shoe',
+        stock: 12,
+        price: 3000,
+        brand: 'Charcol',
+        description: 'this is a pure leather shoe',
         thumbnail: null,
       },
       newAddedProduct: [],
@@ -114,10 +114,14 @@ export default {
           stock: this.newProduct.stock,
         })
         .then((response) => {
-          console.log(alpha, 'hggf');
           this.newAddedProduct.push(alpha.data);
-          alert(newAddedProduct.data);
-          console.log(this.newAddedProduct);
+          this.$swal.fire({
+            position:'top-end',
+            title: 'SucessFull!',
+            text: 'The Product is Added',
+            icon: 'success',
+            confirmButtonText: 'OK',
+          });
         });
     },
   },

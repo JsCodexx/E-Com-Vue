@@ -25,7 +25,7 @@
         data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar"
       >
-        <span class="fa fa-bars"></span>
+        <span class="fa fa-bars "></span>
       </button>
       <div
         class="offcanvas offcanvas-end"
@@ -42,7 +42,7 @@
           </h5>
           <button
             type="button"
-            class="btn-close"
+            class="btn-close bg-white text-light"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
